@@ -1,78 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Administración | Raíces y Tradición 360</title>
-
-<script>
-async function sendRecoveryDirect() {
-  const emailEl = document.getElementById('email');
-  const msgEl = document.getElementById('recoveryMsg');
-  const email = emailEl ? emailEl.value.trim() : '';
-
-  function showRecovery(text, isError=false) {
-    if (!msgEl) {
-      alert(text);
-      return;
-    }
-    msgEl.textContent = text;
-    msgEl.className = 'notice' + (isError ? ' error' : '');
-    msgEl.style.display = 'block';
-  }
-
-  if (!email) {
-    showRecovery('Escribe primero tu correo electrónico.', true);
-    return;
-  }
-
-  showRecovery('Enviando correo de recuperación...');
-
-  try {
-    const endpoint = 'https://gjmiiqdadsslgjszgswe.supabase.co/auth/v1/recover?redirect_to=' +
-      encodeURIComponent('https://rorcu17.github.io/Raices-Tradicion-360/reset-password.html');
-
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': 'sb_publishable_LQFknnAXuHgVpv9rcHVw6Q_sYc6SdPR'
-      },
-      body: JSON.stringify({ email })
-    });
-
-    let payload = {};
-    try { payload = await response.json(); } catch (_) {}
-
-    if (!response.ok) {
-      const detail = payload.msg || payload.message || payload.error_description || ('HTTP ' + response.status);
-      showRecovery('No se pudo enviar el correo: ' + detail, true);
-      return;
-    }
-
-    showRecovery('Correo de recuperación enviado. Abre únicamente el mensaje más reciente.');
-  } catch (err) {
-    showRecovery('No se pudo conectar con Supabase: ' + (err.message || err), true);
-  }
-}
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{--green:#0e493f;--cream:#f7f1e7;--line:#ded8cd;--muted:#6e746f;--red:#8e2f2f}
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:#202925}
 header{background:var(--green);color:#fff;padding:18px 5vw;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+header a{color:#fff}
 .wrap{max-width:1200px;margin:28px auto;padding:0 18px}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 12px 30px #0000000d}
-#loginView{max-width:460px;margin:70px auto}
+#loginView{max-width:470px;margin:55px auto}
 label{display:block;font-weight:700;margin:12px 0}
 input,select,textarea{width:100%;padding:12px;border:1px solid #d8d1c7;border-radius:10px;margin-top:6px;font:inherit}
 button{cursor:pointer}
 .primary{background:var(--green);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700}
-.secondary{background:#fff;color:var(--green);border:1px solid var(--green);border-radius:10px;padding:10px 15px;font-weight:700}
+.secondary{background:#fff;color:var(--green);border:1px solid var(--green);border-radius:10px;padding:11px 15px;font-weight:700}
 .danger{background:var(--red);color:#fff;border:0;border-radius:9px;padding:9px 12px}
 .hidden{display:none!important}
+.notice{padding:11px 13px;border-radius:10px;margin:12px 0;background:#edf6f2;color:var(--green);display:none}
+.error{background:#fdeaea;color:#8b2020}
 .grid{display:grid;grid-template-columns:390px 1fr;gap:22px;align-items:start}
 .topbar{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:20px;flex-wrap:wrap}
 .products{display:grid;gap:14px}
@@ -81,16 +30,67 @@ button{cursor:pointer}
 .muted{color:var(--muted);font-size:13px}
 .price{font-weight:800;color:var(--green);font-size:18px}
 .row-actions{display:flex;gap:8px;flex-direction:column}
-.notice{padding:11px 13px;border-radius:10px;margin:12px 0;background:#edf6f2;color:var(--green);display:none}
-.error{background:#fdeaea;color:#8b2020}
 .preview{margin-top:10px;max-width:100%;max-height:210px;border-radius:12px;display:none}
 .badge{display:inline-block;padding:5px 8px;border-radius:999px;background:#f0eadf;font-size:12px;margin-right:5px}
+.login-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 @media(max-width:900px){.grid{grid-template-columns:1fr}}
 @media(max-width:620px){.product{grid-template-columns:85px 1fr}.product img{width:85px;height:78px}.row-actions{grid-column:1/-1;flex-direction:row}}
 </style>
 </head>
 <body>
+
 <header>
-  <div><strong style="font-size:23px">Raíces y Tradición 360</strong><br><small>Panel de administración</small></div>
-  <div><a href="index.html" style="color:#fff;margin-right:12px">Ver página</a><button id="logoutBtn" class="secondary hidden">Cerrar sesión</button></div>
+  <div>
+    <strong style="font-size:23px">Raíces y Tradición 360</strong><br>
+    <small>Panel de administración</small>
+  </div>
+  <a href="index.html">Ver página</a>
 </header>
+
+<div class="wrap">
+
+<section id="loginView" class="card">
+  <h2>Acceso de administrador</h2>
+  <p class="muted">Ingresa con tu usuario de Supabase.</p>
+
+  <div id="loginMsg" class="notice"></div>
+  <div id="recoveryMsg" class="notice"></div>
+
+  <label>Correo
+    <input id="email" type="email" value="raul.orocu@gmail.com">
+  </label>
+
+  <label>Contraseña
+    <input id="password" type="password">
+  </label>
+
+  <div class="login-actions">
+    <button id="loginBtn" class="primary" type="button">Entrar</button>
+    <button id="forgotBtn" class="secondary" type="button">¿Olvidaste tu contraseña?</button>
+  </div>
+</section>
+
+<section id="adminView" class="hidden">
+  <div class="topbar">
+    <div>
+      <h2 style="margin-bottom:5px">Administrar catálogo</h2>
+      <div id="userEmail" class="muted"></div>
+    </div>
+    <div>
+      <button id="newBtn" class="primary">+ Nuevo producto</button>
+      <button id="logoutBtn" class="secondary">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3 id="formTitle">Nuevo producto</h3>
+      <div id="formMsg" class="notice"></div>
+
+      <input id="productId" type="hidden">
+      <input id="oldImageUrl" type="hidden">
+
+      <label>Código<input id="codigo" placeholder="R360-CHQ-001"></label>
+      <label>Nombre<input id="nombre" placeholder="Nombre del producto"></label>
+
+      <label>Categoría
