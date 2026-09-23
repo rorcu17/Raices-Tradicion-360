@@ -4,6 +4,59 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Administración | Raíces y Tradición 360</title>
+
+<script>
+async function sendRecoveryDirect() {
+  const emailEl = document.getElementById('email');
+  const msgEl = document.getElementById('recoveryMsg');
+  const email = emailEl ? emailEl.value.trim() : '';
+
+  function showRecovery(text, isError=false) {
+    if (!msgEl) {
+      alert(text);
+      return;
+    }
+    msgEl.textContent = text;
+    msgEl.className = 'notice' + (isError ? ' error' : '');
+    msgEl.style.display = 'block';
+  }
+
+  if (!email) {
+    showRecovery('Escribe primero tu correo electrónico.', true);
+    return;
+  }
+
+  showRecovery('Enviando correo de recuperación...');
+
+  try {
+    const endpoint = 'https://gjmiiqdadsslgjszgswe.supabase.co/auth/v1/recover?redirect_to=' +
+      encodeURIComponent('https://rorcu17.github.io/Raices-Tradicion-360/reset-password.html');
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': 'sb_publishable_LQFknnAXuHgVpv9rcHVw6Q_sYc6SdPR'
+      },
+      body: JSON.stringify({ email })
+    });
+
+    let payload = {};
+    try { payload = await response.json(); } catch (_) {}
+
+    if (!response.ok) {
+      const detail = payload.msg || payload.message || payload.error_description || ('HTTP ' + response.status);
+      showRecovery('No se pudo enviar el correo: ' + detail, true);
+      return;
+    }
+
+    showRecovery('Correo de recuperación enviado. Abre únicamente el mensaje más reciente.');
+  } catch (err) {
+    showRecovery('No se pudo conectar con Supabase: ' + (err.message || err), true);
+  }
+}
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{--green:#0e493f;--cream:#f7f1e7;--line:#ded8cd;--muted:#6e746f;--red:#8e2f2f}
@@ -41,56 +94,3 @@ button{cursor:pointer}
   <div><strong style="font-size:23px">Raíces y Tradición 360</strong><br><small>Panel de administración</small></div>
   <div><a href="index.html" style="color:#fff;margin-right:12px">Ver página</a><button id="logoutBtn" class="secondary hidden">Cerrar sesión</button></div>
 </header>
-
-<div class="wrap">
-  <section id="loginView" class="card">
-    <h2>Acceso de administrador</h2>
-    <p class="muted">Ingresa con tu cuenta creada en Supabase.</p>
-    <div id="loginMsg" class="notice"></div>
-    <div id="recoveryMsg" class="notice"></div>
-    <form id="loginForm">
-      <label>Correo<input id="email" type="email" required></label>
-      <label>Contraseña<input id="password" type="password" required></label>
-      <button class="primary" type="submit">Entrar</button>
-      <button id="forgotPasswordBtn" type="button" class="secondary" style="margin-left:8px">¿Olvidaste tu contraseña?</button>
-    </form>
-  </section>
-
-  <section id="adminView" class="hidden">
-    <div class="topbar">
-      <div><h2 style="margin-bottom:5px">Administrar catálogo</h2><div id="userEmail" class="muted"></div></div>
-      <button id="newBtn" class="primary">+ Nuevo producto</button>
-    </div>
-
-    <div class="grid">
-      <div class="card">
-        <h3 id="formTitle">Nuevo producto</h3>
-        <div id="formMsg" class="notice"></div>
-        <form id="productForm">
-          <input id="productId" type="hidden">
-          <input id="oldImageUrl" type="hidden">
-
-          <label>Código<input id="codigo" required placeholder="R360-CHQ-001"></label>
-          <label>Nombre<input id="nombre" required placeholder="Nombre del producto"></label>
-
-          <label>Categoría
-            <select id="categoria">
-              <option>Accesorios</option>
-              <option>Textiles</option>
-              <option>Chaquiras</option>
-              <option>Naguas</option>
-              <option>Camisas</option>
-              <option>Otros</option>
-            </select>
-          </label>
-
-          <label>Descripción<textarea id="descripcion" rows="4"></textarea></label>
-          <label>Precio (B/.)<input id="precio" type="number" step="0.01" min="0"></label>
-
-          <label>Disponibilidad
-            <select id="disponibilidad">
-              <option>Disponible</option>
-              <option>Disponible / personalizable</option>
-              <option>Producción limitada</option>
-              <option>Bajo pedido</option>
-              <option>Por talla y encargo</option>
