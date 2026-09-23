@@ -47,10 +47,12 @@ button{cursor:pointer}
     <h2>Acceso de administrador</h2>
     <p class="muted">Ingresa con tu cuenta creada en Supabase.</p>
     <div id="loginMsg" class="notice"></div>
+    <div id="recoveryMsg" class="notice"></div>
     <form id="loginForm">
       <label>Correo<input id="email" type="email" required></label>
       <label>Contraseña<input id="password" type="password" required></label>
       <button class="primary" type="submit">Entrar</button>
+      <button id="forgotPasswordBtn" type="button" class="secondary" style="margin-left:8px">¿Olvidaste tu contraseña?</button>
     </form>
   </section>
 
@@ -92,5 +94,3 @@ button{cursor:pointer}
               <option>Producción limitada</option>
               <option>Bajo pedido</option>
               <option>Por talla y encargo</option>
-              <option>Agotado</option>
-            </select>
