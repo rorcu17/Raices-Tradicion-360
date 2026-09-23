@@ -5,92 +5,92 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Administración | Raíces y Tradición 360</title>
 <style>
-:root{--green:#0e493f;--cream:#f7f1e7;--line:#ded8cd;--muted:#6e746f;--red:#8e2f2f}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:#202925}
-header{background:var(--green);color:#fff;padding:18px 5vw;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-header a{color:#fff}
-.wrap{max-width:1200px;margin:28px auto;padding:0 18px}
-.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 12px 30px #0000000d}
-#loginView{max-width:470px;margin:55px auto}
-label{display:block;font-weight:700;margin:12px 0}
-input,select,textarea{width:100%;padding:12px;border:1px solid #d8d1c7;border-radius:10px;margin-top:6px;font:inherit}
-button{cursor:pointer}
-.primary{background:var(--green);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700}
-.secondary{background:#fff;color:var(--green);border:1px solid var(--green);border-radius:10px;padding:11px 15px;font-weight:700}
-.danger{background:var(--red);color:#fff;border:0;border-radius:9px;padding:9px 12px}
-.hidden{display:none!important}
-.notice{padding:11px 13px;border-radius:10px;margin:12px 0;background:#edf6f2;color:var(--green);display:none}
-.error{background:#fdeaea;color:#8b2020}
-.grid{display:grid;grid-template-columns:390px 1fr;gap:22px;align-items:start}
-.topbar{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:20px;flex-wrap:wrap}
-.products{display:grid;gap:14px}
-.product{display:grid;grid-template-columns:110px 1fr auto;gap:15px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:12px}
-.product img{width:110px;height:95px;object-fit:cover;border-radius:10px;background:#eee}
-.muted{color:var(--muted);font-size:13px}
-.price{font-weight:800;color:var(--green);font-size:18px}
-.row-actions{display:flex;gap:8px;flex-direction:column}
-.preview{margin-top:10px;max-width:100%;max-height:210px;border-radius:12px;display:none}
-.badge{display:inline-block;padding:5px 8px;border-radius:999px;background:#f0eadf;font-size:12px;margin-right:5px}
-.login-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-@media(max-width:900px){.grid{grid-template-columns:1fr}}
-@media(max-width:620px){.product{grid-template-columns:85px 1fr}.product img{width:85px;height:78px}.row-actions{grid-column:1/-1;flex-direction:row}}
+body{margin:0;font-family:Arial,sans-serif;background:#f7f1e7;color:#1f2724}
+header{background:#0e493f;color:white;padding:22px 5vw}
+main{max-width:480px;margin:60px auto;padding:0 18px}
+.card{background:white;border:1px solid #ded8cd;border-radius:18px;padding:24px;box-shadow:0 12px 30px #0001}
+label{display:block;font-weight:700;margin:14px 0}
+input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #ccc;border-radius:10px;margin-top:6px;font-size:16px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+button{padding:12px 16px;border-radius:10px;font-weight:700;cursor:pointer}
+.primary{border:0;background:#0e493f;color:white}
+.secondary{border:1px solid #0e493f;background:white;color:#0e493f}
+.msg{display:none;margin-top:15px;padding:12px;border-radius:10px;background:#edf6f2;color:#0e493f}
+.err{background:#fdeaea;color:#8b2020}
 </style>
 </head>
 <body>
-
 <header>
-  <div>
-    <strong style="font-size:23px">Raíces y Tradición 360</strong><br>
-    <small>Panel de administración</small>
-  </div>
-  <a href="index.html">Ver página</a>
+  <strong style="font-size:24px">Raíces y Tradición 360</strong><br>
+  <small>Panel de administración</small>
 </header>
 
-<div class="wrap">
+<main>
+  <div class="card">
+    <h1>Acceso de administrador</h1>
 
-<section id="loginView" class="card">
-  <h2>Acceso de administrador</h2>
-  <p class="muted">Ingresa con tu usuario de Supabase.</p>
+    <label>Correo
+      <input id="email" type="email" value="raul.orocu@gmail.com">
+    </label>
 
-  <div id="loginMsg" class="notice"></div>
-  <div id="recoveryMsg" class="notice"></div>
+    <label>Contraseña
+      <input id="password" type="password">
+    </label>
 
-  <label>Correo
-    <input id="email" type="email" value="raul.orocu@gmail.com">
-  </label>
-
-  <label>Contraseña
-    <input id="password" type="password">
-  </label>
-
-  <div class="login-actions">
-    <button id="loginBtn" class="primary" type="button">Entrar</button>
-    <button id="forgotBtn" class="secondary" type="button">¿Olvidaste tu contraseña?</button>
-  </div>
-</section>
-
-<section id="adminView" class="hidden">
-  <div class="topbar">
-    <div>
-      <h2 style="margin-bottom:5px">Administrar catálogo</h2>
-      <div id="userEmail" class="muted"></div>
+    <div class="actions">
+      <button class="primary" type="button" onclick="iniciarSesion()">Entrar</button>
+      <button class="secondary" type="button" onclick="recuperarClave()">¿Olvidaste tu contraseña?</button>
     </div>
-    <div>
-      <button id="newBtn" class="primary">+ Nuevo producto</button>
-      <button id="logoutBtn" class="secondary">Cerrar sesión</button>
-    </div>
+
+    <div id="msg" class="msg"></div>
   </div>
+</main>
 
-  <div class="grid">
-    <div class="card">
-      <h3 id="formTitle">Nuevo producto</h3>
-      <div id="formMsg" class="notice"></div>
+<script>
+const SUPABASE_URL = 'https://gjmiiqdadsslgjszgswe.supabase.co';
+const API_KEY = 'sb_publishable_LQFknnAXuHgVpv9rcHVw6Q_sYc6SdPR';
+const RESET_URL = 'https://rorcu17.github.io/Raices-Tradicion-360/reset-password.html';
 
-      <input id="productId" type="hidden">
-      <input id="oldImageUrl" type="hidden">
+function mensaje(texto, error=false) {
+  const m = document.getElementById('msg');
+  m.textContent = texto;
+  m.className = 'msg' + (error ? ' err' : '');
+  m.style.display = 'block';
+}
 
-      <label>Código<input id="codigo" placeholder="R360-CHQ-001"></label>
-      <label>Nombre<input id="nombre" placeholder="Nombre del producto"></label>
+async function recuperarClave() {
+  const email = document.getElementById('email').value.trim();
 
-      <label>Categoría
+  if (!email) {
+    mensaje('Escribe primero tu correo electrónico.', true);
+    return;
+  }
+
+  mensaje('Enviando correo de recuperación...');
+
+  try {
+    const url = SUPABASE_URL + '/auth/v1/recover?redirect_to=' + encodeURIComponent(RESET_URL);
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': API_KEY
+      },
+      body: JSON.stringify({email: email})
+    });
+
+    let data = {};
+    try { data = await r.json(); } catch(e) {}
+
+    if (!r.ok) {
+      mensaje('No se pudo enviar: ' + (data.msg || data.message || ('Error ' + r.status)), true);
+      return;
+    }
+
+    mensaje('Correo enviado. Abre únicamente el mensaje más reciente.');
+  } catch(e) {
+    mensaje('Error de conexión: ' + e.message, true);
+  }
+}
+
+async function iniciarSesion() {
