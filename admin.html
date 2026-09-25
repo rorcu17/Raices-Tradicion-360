@@ -17,6 +17,7 @@ label{display:block;font-weight:700;margin:12px 0}
 input,select,textarea{width:100%;padding:12px;border:1px solid #d8d1c7;border-radius:10px;margin-top:6px;font:inherit}
 button{cursor:pointer}
 .primary{background:var(--green);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700}
+button:disabled{opacity:.6;cursor:not-allowed}
 .secondary{background:#fff;color:var(--green);border:1px solid var(--green);border-radius:10px;padding:11px 15px;font-weight:700}
 .danger{background:var(--red);color:#fff;border:0;border-radius:9px;padding:9px 12px}
 .hidden{display:none!important}
@@ -84,6 +85,7 @@ button{cursor:pointer}
 
   <div class="grid">
     <div class="card">
+      <form id="productForm" onsubmit="saveProduct(event); return false;">
       <h3 id="formTitle">Nuevo producto</h3>
       <div id="formMsg" class="notice"></div>
 
@@ -127,9 +129,11 @@ button{cursor:pointer}
       </label>
 
       <div class="login-actions">
-        <button id="saveBtn" class="primary" type="button">Guardar producto</button>
+        <button id="saveBtn" class="primary" type="submit">Guardar producto</button>
         <button id="clearBtn" class="secondary" type="button">Limpiar</button>
       </div>
+      <div id="formMsgBottom" class="notice"></div>
+      </form>
     </div>
 
     <div class="card">
@@ -157,14 +161,28 @@ const $ = id => document.getElementById(id);
 
 function show(id, text, error=false){
   const el=$(id);
-  el.textContent=text;
-  el.className='notice'+(error?' error':'');
-  el.style.display='block';
+  if(el){
+    el.textContent=text;
+    el.className='notice'+(error?' error':'');
+    el.style.display='block';
+  }
+  if(id==='formMsg'){
+    const bottom=$('formMsgBottom');
+    if(bottom){
+      bottom.textContent=text;
+      bottom.className='notice'+(error?' error':'');
+      bottom.style.display='block';
+    }
+  }
 }
 
 function hide(id){
   const el=$(id);
   if(el) el.style.display='none';
+  if(id==='formMsg'){
+    const bottom=$('formMsgBottom');
+    if(bottom) bottom.style.display='none';
+  }
 }
 
 function esc(v){
@@ -338,11 +356,22 @@ async function deleteImage(url){
   );
 }
 
-async function saveProduct(){
+async function saveProduct(event){
+  if(event) event.preventDefault();
   hide('formMsg');
+
+  const saveButton=$('saveBtn');
+  if(saveButton){
+    saveButton.disabled=true;
+    saveButton.textContent='Guardando...';
+  }
 
   if(!$('codigo').value.trim() || !$('nombre').value.trim()){
     show('formMsg','Completa código y nombre.',true);
+    if(saveButton){
+      saveButton.disabled=false;
+      saveButton.textContent='Guardar producto';
+    }
     return;
   }
 
@@ -399,6 +428,12 @@ async function saveProduct(){
 
   }catch(err){
     show('formMsg','Error: '+err.message,true);
+  }finally{
+    const saveButton=$('saveBtn');
+    if(saveButton){
+      saveButton.disabled=false;
+      saveButton.textContent='Guardar producto';
+    }
   }
 }
 
@@ -506,7 +541,6 @@ async function deleteProduct(p){
 $('loginBtn').onclick=login;
 $('forgotBtn').onclick=recover;
 $('logoutBtn').onclick=logout;
-$('saveBtn').onclick=saveProduct;
 $('clearBtn').onclick=clearForm;
 $('newBtn').onclick=clearForm;
 $('refreshBtn').onclick=loadProducts;
