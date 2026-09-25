@@ -5,92 +5,518 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Administración | Raíces y Tradición 360</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#f7f1e7;color:#1f2724}
-header{background:#0e493f;color:white;padding:22px 5vw}
-main{max-width:480px;margin:60px auto;padding:0 18px}
-.card{background:white;border:1px solid #ded8cd;border-radius:18px;padding:24px;box-shadow:0 12px 30px #0001}
-label{display:block;font-weight:700;margin:14px 0}
-input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #ccc;border-radius:10px;margin-top:6px;font-size:16px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-button{padding:12px 16px;border-radius:10px;font-weight:700;cursor:pointer}
-.primary{border:0;background:#0e493f;color:white}
-.secondary{border:1px solid #0e493f;background:white;color:#0e493f}
-.msg{display:none;margin-top:15px;padding:12px;border-radius:10px;background:#edf6f2;color:#0e493f}
-.err{background:#fdeaea;color:#8b2020}
+:root{--green:#0e493f;--cream:#f7f1e7;--line:#ded8cd;--muted:#6e746f;--red:#8e2f2f}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:#202925}
+header{background:var(--green);color:#fff;padding:18px 5vw;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+header a{color:#fff}
+.wrap{max-width:1200px;margin:28px auto;padding:0 18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 12px 30px #0000000d}
+#loginView{max-width:470px;margin:55px auto}
+label{display:block;font-weight:700;margin:12px 0}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d8d1c7;border-radius:10px;margin-top:6px;font:inherit}
+button{cursor:pointer}
+.primary{background:var(--green);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700}
+.secondary{background:#fff;color:var(--green);border:1px solid var(--green);border-radius:10px;padding:11px 15px;font-weight:700}
+.danger{background:var(--red);color:#fff;border:0;border-radius:9px;padding:9px 12px}
+.hidden{display:none!important}
+.notice{padding:11px 13px;border-radius:10px;margin:12px 0;background:#edf6f2;color:var(--green);display:none}
+.error{background:#fdeaea;color:#8b2020}
+.grid{display:grid;grid-template-columns:390px 1fr;gap:22px;align-items:start}
+.topbar{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:20px;flex-wrap:wrap}
+.products{display:grid;gap:14px}
+.product{display:grid;grid-template-columns:110px 1fr auto;gap:15px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:12px}
+.product img{width:110px;height:95px;object-fit:cover;border-radius:10px;background:#eee}
+.muted{color:var(--muted);font-size:13px}
+.price{font-weight:800;color:var(--green);font-size:18px}
+.row-actions{display:flex;gap:8px;flex-direction:column}
+.preview{margin-top:10px;max-width:100%;max-height:210px;border-radius:12px;display:none}
+.badge{display:inline-block;padding:5px 8px;border-radius:999px;background:#f0eadf;font-size:12px;margin-right:5px}
+.login-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+@media(max-width:620px){.product{grid-template-columns:85px 1fr}.product img{width:85px;height:78px}.row-actions{grid-column:1/-1;flex-direction:row}}
 </style>
 </head>
 <body>
+
 <header>
-  <strong style="font-size:24px">Raíces y Tradición 360</strong><br>
-  <small>Panel de administración</small>
+  <div>
+    <strong style="font-size:23px">Raíces y Tradición 360</strong><br>
+    <small>Panel de administración</small>
+  </div>
+  <a href="index.html">Ver página</a>
 </header>
 
-<main>
-  <div class="card">
-    <h1>Acceso de administrador</h1>
+<div class="wrap">
 
-    <label>Correo
-      <input id="email" type="email" value="raul.orocu@gmail.com">
-    </label>
+<section id="loginView" class="card">
+  <h2>Acceso de administrador</h2>
+  <p class="muted">Ingresa con tu usuario de Supabase.</p>
 
-    <label>Contraseña
-      <input id="password" type="password">
-    </label>
+  <div id="loginMsg" class="notice"></div>
+  <div id="recoveryMsg" class="notice"></div>
 
-    <div class="actions">
-      <button class="primary" type="button" onclick="iniciarSesion()">Entrar</button>
-      <button class="secondary" type="button" onclick="recuperarClave()">¿Olvidaste tu contraseña?</button>
+  <label>Correo
+    <input id="email" type="email" value="raul.orocu@gmail.com">
+  </label>
+
+  <label>Contraseña
+    <input id="password" type="password">
+  </label>
+
+  <div class="login-actions">
+    <button id="loginBtn" class="primary" type="button">Entrar</button>
+    <button id="forgotBtn" class="secondary" type="button">¿Olvidaste tu contraseña?</button>
+  </div>
+</section>
+
+<section id="adminView" class="hidden">
+  <div class="topbar">
+    <div>
+      <h2 style="margin-bottom:5px">Administrar catálogo</h2>
+      <div id="userEmail" class="muted"></div>
+    </div>
+    <div>
+      <button id="newBtn" class="primary">+ Nuevo producto</button>
+      <button id="logoutBtn" class="secondary">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3 id="formTitle">Nuevo producto</h3>
+      <div id="formMsg" class="notice"></div>
+
+      <input id="productId" type="hidden">
+      <input id="oldImageUrl" type="hidden">
+
+      <label>Código<input id="codigo" placeholder="R360-CHQ-001"></label>
+      <label>Nombre<input id="nombre" placeholder="Nombre del producto"></label>
+
+      <label>Categoría
+        <select id="categoria">
+          <option>Accesorios</option>
+          <option>Textiles</option>
+          <option>Chaquiras</option>
+          <option>Naguas</option>
+          <option>Camisas</option>
+          <option>Otros</option>
+        </select>
+      </label>
+
+      <label>Descripción<textarea id="descripcion" rows="4"></textarea></label>
+      <label>Precio (B/.)<input id="precio" type="number" min="0" step="0.01"></label>
+
+      <label>Disponibilidad
+        <select id="disponibilidad">
+          <option>Disponible</option>
+          <option>Disponible / personalizable</option>
+          <option>Producción limitada</option>
+          <option>Bajo pedido</option>
+          <option>Por talla y encargo</option>
+          <option>Agotado</option>
+        </select>
+      </label>
+
+      <label>Foto<input id="foto" type="file" accept="image/*"></label>
+      <img id="preview" class="preview">
+
+      <label style="display:flex;align-items:center;gap:8px">
+        <input id="activo" type="checkbox" checked style="width:auto;margin:0">
+        Mostrar en catálogo
+      </label>
+
+      <div class="login-actions">
+        <button id="saveBtn" class="primary" type="button">Guardar producto</button>
+        <button id="clearBtn" class="secondary" type="button">Limpiar</button>
+      </div>
     </div>
 
-    <div id="msg" class="msg"></div>
+    <div class="card">
+      <div class="topbar">
+        <h3 style="margin:0">Productos</h3>
+        <button id="refreshBtn" class="secondary">Actualizar</button>
+      </div>
+      <div id="listMsg" class="notice"></div>
+      <div id="productList" class="products"></div>
+    </div>
   </div>
-</main>
+</section>
+
+</div>
 
 <script>
 const SUPABASE_URL = 'https://gjmiiqdadsslgjszgswe.supabase.co';
 const API_KEY = 'sb_publishable_LQFknnAXuHgVpv9rcHVw6Q_sYc6SdPR';
-const RESET_URL = 'https://rorcu17.github.io/Raices-Tradicion-360/reset-password.html';
+const REDIRECT_URL = 'https://rorcu17.github.io/Raices-Tradicion-360/reset-password.html';
 
-function mensaje(texto, error=false) {
-  const m = document.getElementById('msg');
-  m.textContent = texto;
-  m.className = 'msg' + (error ? ' err' : '');
-  m.style.display = 'block';
+let accessToken = localStorage.getItem('rt360_access_token') || '';
+let currentEmail = localStorage.getItem('rt360_email') || '';
+
+const $ = id => document.getElementById(id);
+
+function show(id, text, error=false){
+  const el=$(id);
+  el.textContent=text;
+  el.className='notice'+(error?' error':'');
+  el.style.display='block';
 }
 
-async function recuperarClave() {
-  const email = document.getElementById('email').value.trim();
+function hide(id){
+  const el=$(id);
+  if(el) el.style.display='none';
+}
 
-  if (!email) {
-    mensaje('Escribe primero tu correo electrónico.', true);
+function esc(v){
+  return String(v ?? '')
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'","&#039;");
+}
+
+function authHeaders(extra={}){
+  return {
+    'apikey': API_KEY,
+    'Authorization': 'Bearer ' + accessToken,
+    ...extra
+  };
+}
+
+function showAdmin(){
+  $('loginView').classList.add('hidden');
+  $('adminView').classList.remove('hidden');
+  $('userEmail').textContent='Sesión: '+currentEmail;
+  loadProducts();
+}
+
+function showLogin(){
+  $('adminView').classList.add('hidden');
+  $('loginView').classList.remove('hidden');
+}
+
+async function login(){
+  hide('loginMsg');
+  const email=$('email').value.trim();
+  const password=$('password').value;
+
+  if(!email || !password){
+    show('loginMsg','Escribe correo y contraseña.',true);
     return;
   }
 
-  mensaje('Enviando correo de recuperación...');
+  show('loginMsg','Verificando acceso...');
 
-  try {
-    const url = SUPABASE_URL + '/auth/v1/recover?redirect_to=' + encodeURIComponent(RESET_URL);
-    const r = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': API_KEY
-      },
-      body: JSON.stringify({email: email})
+  try{
+    const r=await fetch(SUPABASE_URL+'/auth/v1/token?grant_type=password',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':API_KEY},
+      body:JSON.stringify({email,password})
     });
+    const data=await r.json();
 
-    let data = {};
-    try { data = await r.json(); } catch(e) {}
-
-    if (!r.ok) {
-      mensaje('No se pudo enviar: ' + (data.msg || data.message || ('Error ' + r.status)), true);
+    if(!r.ok){
+      show('loginMsg','No se pudo iniciar sesión: '+(data.msg||data.message||'credenciales incorrectas'),true);
       return;
     }
 
-    mensaje('Correo enviado. Abre únicamente el mensaje más reciente.');
-  } catch(e) {
-    mensaje('Error de conexión: ' + e.message, true);
+    accessToken=data.access_token;
+    currentEmail=(data.user&&data.user.email)||email;
+    localStorage.setItem('rt360_access_token',accessToken);
+    localStorage.setItem('rt360_email',currentEmail);
+    showAdmin();
+
+  }catch(err){
+    show('loginMsg','Error de conexión: '+err.message,true);
   }
 }
 
-async function iniciarSesion() {
+async function recover(){
+  hide('recoveryMsg');
+  const email=$('email').value.trim();
+
+  if(!email){
+    show('recoveryMsg','Escribe primero tu correo.',true);
+    return;
+  }
+
+  show('recoveryMsg','Enviando correo de recuperación...');
+
+  try{
+    const url=SUPABASE_URL+'/auth/v1/recover?redirect_to='+encodeURIComponent(REDIRECT_URL);
+    const r=await fetch(url,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':API_KEY},
+      body:JSON.stringify({email})
+    });
+
+    let data={};
+    try{ data=await r.json(); }catch(_e){}
+
+    if(!r.ok){
+      show('recoveryMsg','No se pudo enviar: '+(data.msg||data.message||('HTTP '+r.status)),true);
+      return;
+    }
+
+    show('recoveryMsg','Correo enviado. Abre únicamente el mensaje más reciente.');
+  }catch(err){
+    show('recoveryMsg','Error de conexión: '+err.message,true);
+  }
+}
+
+function logout(){
+  accessToken='';
+  currentEmail='';
+  localStorage.removeItem('rt360_access_token');
+  localStorage.removeItem('rt360_email');
+  showLogin();
+}
+
+function clearForm(){
+  $('productId').value='';
+  $('oldImageUrl').value='';
+  $('codigo').value='';
+  $('nombre').value='';
+  $('categoria').value='Accesorios';
+  $('descripcion').value='';
+  $('precio').value='';
+  $('disponibilidad').value='Disponible';
+  $('foto').value='';
+  $('activo').checked=true;
+  $('preview').src='';
+  $('preview').style.display='none';
+  $('formTitle').textContent='Nuevo producto';
+}
+
+$('foto').addEventListener('change',e=>{
+  const f=e.target.files[0];
+  if(!f) return;
+  $('preview').src=URL.createObjectURL(f);
+  $('preview').style.display='block';
+});
+
+async function uploadImage(file, code){
+  const ext=(file.name.split('.').pop()||'jpg').toLowerCase();
+  const safe=(code||'producto').replace(/[^a-z0-9_-]/gi,'_');
+  const path=safe+'_'+Date.now()+'.'+ext;
+
+  const r=await fetch(
+    SUPABASE_URL+'/storage/v1/object/productos/'+encodeURIComponent(path),
+    {
+      method:'POST',
+      headers:authHeaders({
+        'Content-Type':file.type||'application/octet-stream',
+        'x-upsert':'false'
+      }),
+      body:file
+    }
+  );
+
+  if(!r.ok){
+    let data={};
+    try{data=await r.json();}catch(_e){}
+    throw new Error(data.message||data.error||'No se pudo subir la foto');
+  }
+
+  return SUPABASE_URL+'/storage/v1/object/public/productos/'+encodeURIComponent(path);
+}
+
+async function deleteImage(url){
+  if(!url) return;
+  const marker='/storage/v1/object/public/productos/';
+  const i=url.indexOf(marker);
+  if(i===-1) return;
+  const path=decodeURIComponent(url.substring(i+marker.length));
+
+  await fetch(
+    SUPABASE_URL+'/storage/v1/object/productos/'+encodeURIComponent(path),
+    {
+      method:'DELETE',
+      headers:authHeaders()
+    }
+  );
+}
+
+async function saveProduct(){
+  hide('formMsg');
+
+  if(!$('codigo').value.trim() || !$('nombre').value.trim()){
+    show('formMsg','Completa código y nombre.',true);
+    return;
+  }
+
+  show('formMsg','Guardando producto...');
+
+  try{
+    const id=$('productId').value;
+    const oldImage=$('oldImageUrl').value;
+    let imageUrl=oldImage||null;
+    const file=$('foto').files[0];
+
+    if(file){
+      imageUrl=await uploadImage(file,$('codigo').value.trim());
+    }
+
+    const payload={
+      codigo:$('codigo').value.trim(),
+      nombre:$('nombre').value.trim(),
+      categoria:$('categoria').value,
+      descripcion:$('descripcion').value.trim(),
+      precio:$('precio').value===''?null:Number($('precio').value),
+      disponibilidad:$('disponibilidad').value,
+      imagen_url:imageUrl,
+      activo:$('activo').checked
+    };
+
+    const url=id
+      ? SUPABASE_URL+'/rest/v1/productos?id=eq.'+encodeURIComponent(id)
+      : SUPABASE_URL+'/rest/v1/productos';
+
+    const r=await fetch(url,{
+      method:id?'PATCH':'POST',
+      headers:authHeaders({
+        'Content-Type':'application/json',
+        'Prefer':'return=representation'
+      }),
+      body:JSON.stringify(payload)
+    });
+
+    let data=[];
+    try{data=await r.json();}catch(_e){}
+
+    if(!r.ok){
+      throw new Error((data&&data.message)||'No se pudo guardar');
+    }
+
+    if(file && oldImage && oldImage!==imageUrl){
+      await deleteImage(oldImage);
+    }
+
+    show('formMsg',id?'Producto actualizado.':'Producto agregado.');
+    clearForm();
+    loadProducts();
+
+  }catch(err){
+    show('formMsg','Error: '+err.message,true);
+  }
+}
+
+async function loadProducts(){
+  $('productList').innerHTML='<p class="muted">Cargando...</p>';
+
+  try{
+    const r=await fetch(
+      SUPABASE_URL+'/rest/v1/productos?select=*&order=id.desc',
+      {headers:authHeaders()}
+    );
+
+    const data=await r.json();
+
+    if(!r.ok){
+      throw new Error(data.message||'No se pudieron cargar los productos');
+    }
+
+    $('productList').innerHTML='';
+
+    if(!data.length){
+      $('productList').innerHTML='<p class="muted">Todavía no hay productos.</p>';
+      return;
+    }
+
+    data.forEach(p=>{
+      const row=document.createElement('article');
+      row.className='product';
+
+      const img=p.imagen_url
+        ? '<img src="'+esc(p.imagen_url)+'" alt="'+esc(p.nombre||'Producto')+'">'
+        : '<div style="width:110px;height:95px;background:#eee;border-radius:10px;display:grid;place-items:center">Sin foto</div>';
+
+      row.innerHTML=img+
+        '<div>'+
+          '<div class="muted">'+esc(p.codigo||'')+'</div>'+
+          '<h3 style="margin:4px 0">'+esc(p.nombre||'')+'</h3>'+
+          '<span class="badge">'+esc(p.categoria||'')+'</span>'+
+          '<span class="badge">'+esc(p.disponibilidad||'')+'</span>'+
+          '<p class="muted">'+esc(p.descripcion||'')+'</p>'+
+          '<div class="price">'+(p.precio==null?'Sin precio':'B/. '+Number(p.precio).toFixed(2))+'</div>'+
+          '<div class="muted">'+(p.activo===false?'Oculto':'Visible en catálogo')+'</div>'+
+        '</div>'+
+        '<div class="row-actions">'+
+          '<button class="secondary editBtn">Editar</button>'+
+          '<button class="danger delBtn">Borrar</button>'+
+        '</div>';
+
+      row.querySelector('.editBtn').onclick=()=>editProduct(p);
+      row.querySelector('.delBtn').onclick=()=>deleteProduct(p);
+      $('productList').appendChild(row);
+    });
+
+  }catch(err){
+    $('productList').innerHTML='';
+    show('listMsg','Error: '+err.message,true);
+  }
+}
+
+function editProduct(p){
+  $('productId').value=p.id||'';
+  $('oldImageUrl').value=p.imagen_url||'';
+  $('codigo').value=p.codigo||'';
+  $('nombre').value=p.nombre||'';
+  $('categoria').value=p.categoria||'Otros';
+  $('descripcion').value=p.descripcion||'';
+  $('precio').value=p.precio??'';
+  $('disponibilidad').value=p.disponibilidad||'Disponible';
+  $('activo').checked=p.activo!==false;
+  $('formTitle').textContent='Editar producto';
+
+  if(p.imagen_url){
+    $('preview').src=p.imagen_url;
+    $('preview').style.display='block';
+  }else{
+    $('preview').style.display='none';
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+async function deleteProduct(p){
+  if(!confirm('¿Deseas borrar este producto?')) return;
+
+  try{
+    const r=await fetch(
+      SUPABASE_URL+'/rest/v1/productos?id=eq.'+encodeURIComponent(p.id),
+      {method:'DELETE',headers:authHeaders()}
+    );
+
+    if(!r.ok){
+      let data={};
+      try{data=await r.json();}catch(_e){}
+      throw new Error(data.message||'No se pudo borrar');
+    }
+
+    if(p.imagen_url) await deleteImage(p.imagen_url);
+    show('listMsg','Producto eliminado.');
+    loadProducts();
+
+  }catch(err){
+    show('listMsg','Error: '+err.message,true);
+  }
+}
+
+$('loginBtn').onclick=login;
+$('forgotBtn').onclick=recover;
+$('logoutBtn').onclick=logout;
+$('saveBtn').onclick=saveProduct;
+$('clearBtn').onclick=clearForm;
+$('newBtn').onclick=clearForm;
+$('refreshBtn').onclick=loadProducts;
+
+if(accessToken && currentEmail){
+  showAdmin();
+}else{
+  showLogin();
+}
+</script>
+
+</body>
+</html>
