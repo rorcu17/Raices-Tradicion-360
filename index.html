@@ -3,10 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Raíces y Tradición 360</title>
-<meta name="description" content="Vitrina digital de artesanía local, cultura y emprendimiento estudiantil.">
+
+<meta
+  name="description"
+  content="Vitrina digital de artesanía local, cultura y emprendimiento estudiantil."
+>
+
 <style>
-:root {
+
+:root{
   --verde:#0e493f;
   --verde2:#173f38;
   --crema:#fff9ef;
@@ -18,315 +25,1846 @@
   --line:#e3d8c8;
   --white:#ffffff;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fffdf8;color:var(--texto)}
-a{color:inherit;text-decoration:none}
-.topbar{background:var(--verde2);color:#fff;text-align:center;padding:8px 15px;font-size:13px}
-header{position:sticky;top:0;z-index:50;background:rgba(255,253,248,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{max-width:1200px;margin:auto;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;gap:20px}
-.brand{display:flex;gap:12px;align-items:center}
-.logo{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,var(--verde),#1d6b59);color:white;font:700 24px Georgia;border:3px solid #e7c675}
-.brand small{display:block;color:var(--muted);margin-top:2px}
-.links{display:flex;gap:18px;align-items:center;font-weight:700;font-size:14px}
-.links .cta{background:var(--verde);color:white;padding:11px 16px;border-radius:999px}
-.hero{min-height:600px;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;padding:70px max(20px,calc((100vw - 1200px)/2));background:linear-gradient(135deg,#fffdf8,#f3e4cd)}
-.eyebrow{text-transform:uppercase;letter-spacing:.13em;color:var(--coral);font-weight:800;font-size:12px}
-.hero h1{font:700 64px/1.03 Georgia,serif;margin:15px 0 20px}
-.hero h1 em{color:var(--coral);font-style:normal}
-.hero p{font-size:19px;line-height:1.65;color:#5a645f;max-width:720px}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
-.btn{border:0;border-radius:999px;padding:13px 18px;font-weight:800;cursor:pointer;display:inline-block}
-.primary{background:var(--verde);color:white}
-.secondary{border:2px solid var(--verde);color:var(--verde);background:transparent}
-.hero-art{position:relative;min-height:430px;border-radius:36px;background:linear-gradient(145deg,#f2ce77,#c65f49 55%,#0f4a40);overflow:hidden;box-shadow:0 30px 70px #0f4b4025}
-.sun{position:absolute;right:58px;top:50px;width:130px;height:130px;border-radius:50%;background:#ffe8a4}
-.art{position:absolute;border:2px solid #ffffff80;display:grid;place-items:center;color:#fff;font-weight:900;box-shadow:0 15px 35px #0002}
-.a1{left:40px;top:72px;width:155px;height:190px;background:#c8614b;transform:rotate(-7deg)}
-.a2{right:48px;bottom:55px;width:170px;height:210px;background:#0f4b40;transform:rotate(7deg)}
-.a3{left:122px;bottom:35px;width:145px;height:115px;background:#d6a74a;color:#543c1d}
-.note{position:absolute;right:28px;top:222px;background:white;padding:16px 18px;border-radius:14px;box-shadow:0 10px 30px #0002}
-.section{max-width:1200px;margin:auto;padding:80px 20px}
-.heading{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:28px}
-.heading h2{font:700 42px Georgia,serif;margin:8px 0}
-.heading p{max-width:560px;color:var(--muted);line-height:1.6}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
-.filters button{border:1px solid var(--line);background:#fff;padding:9px 14px;border-radius:999px;cursor:pointer}
-.filters button.active{background:var(--verde);color:white}
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.product{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 12px 28px #00000010;transition:.2s}
-.product:hover{transform:translateY(-4px);box-shadow:0 18px 35px #00000016}
-.product img{width:100%;height:240px;object-fit:cover;background:#eee}
-.product-body{padding:18px}
-.code{font-size:12px;color:var(--muted)}
-.product h3{font:700 25px Georgia,serif;margin:8px 0}
-.price{font-size:21px;font-weight:900;color:var(--verde)}
-.badges{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
-.badge{background:#f3eee5;border-radius:999px;padding:6px 9px;font-size:12px}
-.desc{color:#5f6863;line-height:1.55}
-.empty{grid-column:1/-1;text-align:center;padding:45px;background:#faf6ef;border-radius:18px;color:var(--muted)}
-.impact{background:var(--verde);color:white}
-.impact-inner{max-width:1200px;margin:auto;padding:75px 20px}
-.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
-.impact-card{background:#ffffff10;border:1px solid #ffffff28;border-radius:18px;padding:22px}
-.story{display:grid;grid-template-columns:.85fr 1.15fr;gap:45px;align-items:center}
-.story-art{min-height:330px;border-radius:28px;background:linear-gradient(145deg,var(--oro),var(--coral));display:grid;place-items:center;color:white;font:700 100px Georgia}
-.story-copy p{line-height:1.7;color:#59635e}
-.contact{background:#f5eee2}
-.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.contact-card{background:white;border:1px solid var(--line);border-radius:18px;padding:22px}
-footer{background:#102f29;color:white;padding:30px 20px}
-.footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
-.admin-link{opacity:.7;font-size:13px}
-.status{font-size:13px;color:var(--muted);margin:10px 0 20px}
-@media(max-width:980px){.links{display:none}.hero{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr)}.story{grid-template-columns:1fr}}
-@media(max-width:650px){.hero{padding-top:45px}.hero h1{font-size:42px}.products{grid-template-columns:1fr}.impact-grid,.contact-grid{grid-template-columns:1fr}.heading{align-items:start;flex-direction:column}}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#fffdf8;
+  color:var(--texto);
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.topbar{
+  background:var(--verde2);
+  color:white;
+  text-align:center;
+  padding:8px 15px;
+  font-size:13px;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,253,248,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,var(--verde),#1d6b59);
+  color:white;
+  font:700 17px Georgia;
+  border:3px solid #e7c675;
+}
+
+.brand strong{
+  font-size:18px;
+}
+
+.brand small{
+  display:block;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+.links{
+  display:flex;
+  gap:17px;
+  align-items:center;
+  font-weight:700;
+  font-size:14px;
+}
+
+.links .cta{
+  background:var(--verde);
+  color:white;
+  padding:10px 16px;
+  border-radius:999px;
+}
+
+/* PORTADA */
+
+.hero{
+  min-height:620px;
+  display:grid;
+  grid-template-columns:1.08fr .92fr;
+  gap:45px;
+  align-items:center;
+  padding:70px max(20px,calc((100vw - 1200px)/2));
+  background:linear-gradient(135deg,#fffdf8,#f3e4cd);
+}
+
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  color:var(--coral);
+  font-weight:800;
+  font-size:12px;
+}
+
+.hero h1{
+  font:700 62px/1.03 Georgia,serif;
+  margin:15px 0 20px;
+}
+
+.hero h1 em{
+  color:var(--coral);
+  font-style:normal;
+}
+
+.hero p{
+  font-size:19px;
+  line-height:1.65;
+  color:#5a645f;
+  max-width:700px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.btn{
+  border:0;
+  border-radius:999px;
+  padding:13px 18px;
+  font-weight:800;
+  cursor:pointer;
+  display:inline-block;
+}
+
+.primary{
+  background:var(--verde);
+  color:white;
+}
+
+.secondary{
+  border:2px solid var(--verde);
+  color:var(--verde);
+  background:transparent;
+}
+
+.hero-art{
+  position:relative;
+  min-height:430px;
+  border-radius:36px;
+  background:
+    linear-gradient(
+      145deg,
+      #f2ce77,
+      #c65f49 55%,
+      #0f4a40
+    );
+  overflow:hidden;
+  box-shadow:0 30px 70px #0f4b4025;
+}
+
+.hero-symbol{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-size:82px;
+  font-family:Georgia;
+  color:#ffffffdd;
+}
+
+.ribbon{
+  position:absolute;
+  left:30px;
+  right:30px;
+  bottom:28px;
+  background:white;
+  border-radius:18px;
+  padding:16px 18px;
+  box-shadow:0 12px 30px #0002;
+}
+
+.ribbon b{
+  color:var(--verde);
+}
+
+/* SECCIONES */
+
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:76px 20px;
+}
+
+.heading{
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  align-items:end;
+  margin-bottom:28px;
+}
+
+.heading h2{
+  font:700 42px Georgia,serif;
+  margin:8px 0;
+}
+
+.heading p{
+  max-width:580px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* LOS 6 CAMBIOS */
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.feature{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:24px;
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:20px;
+  align-items:center;
+  box-shadow:0 12px 28px #0000000d;
+}
+
+.feature-visual{
+  height:150px;
+  border-radius:20px;
+  background:linear-gradient(145deg,#f2dfb0,#c9614c);
+  display:grid;
+  place-items:center;
+  font-size:62px;
+}
+
+.feature h3{
+  font:700 26px Georgia;
+  margin:0 0 8px;
+}
+
+.feature p{
+  color:#5f6863;
+  line-height:1.55;
+  margin:0;
+}
+
+/* TRADICIÓN */
+
+.tradition-strip{
+  background:var(--verde);
+  color:white;
+}
+
+.tradition-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:68px 20px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.tradition-card{
+  border:1px solid #ffffff2b;
+  background:#ffffff0d;
+  border-radius:20px;
+  padding:22px;
+}
+
+.tradition-card .icon{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.tradition-card h3{
+  margin:0 0 8px;
+}
+
+.tradition-card p{
+  margin:0;
+  color:#eef5f2;
+  line-height:1.55;
+}
+
+/* CATÁLOGO */
+
+.filters{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:24px;
+}
+
+.filters button{
+  border:1px solid var(--line);
+  background:white;
+  padding:9px 14px;
+  border-radius:999px;
+  cursor:pointer;
+}
+
+.filters button.active{
+  background:var(--verde);
+  color:white;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.product{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 12px 28px #00000010;
+  transition:.2s;
+}
+
+.product:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 35px #00000016;
+}
+
+/*
+IMPORTANTE:
+contain permite que la fotografía se vea completa
+sin cortar la nagua, camisa o chaquira.
+*/
+
+.product-media{
+  height:270px;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px;
+  border-bottom:1px solid #f0e8dd;
+}
+
+.product img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+.product-body{
+  padding:18px;
+}
+
+.code{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.product h3{
+  font:700 25px Georgia,serif;
+  margin:8px 0;
+}
+
+.price{
+  font-size:21px;
+  font-weight:900;
+  color:var(--verde);
+}
+
+.badges{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin:10px 0;
+}
+
+.badge{
+  background:#f3eee5;
+  border-radius:999px;
+  padding:6px 9px;
+  font-size:12px;
+}
+
+.desc{
+  color:#5f6863;
+  line-height:1.55;
+}
+
+.empty{
+  grid-column:1/-1;
+  text-align:center;
+  padding:45px;
+  background:#faf6ef;
+  border-radius:18px;
+  color:var(--muted);
+}
+
+.status{
+  font-size:13px;
+  color:var(--muted);
+  margin:10px 0 20px;
+}
+
+/* PEDIDO */
+
+.order-section{
+  background:#f5eee2;
+}
+
+.order-wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:76px 20px;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:34px;
+  align-items:stretch;
+}
+
+.order-visual{
+  border-radius:28px;
+  background:linear-gradient(145deg,#d5aa54,#c9614c);
+  min-height:410px;
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+
+.order-visual::before{
+  content:"🧵";
+  position:absolute;
+  font-size:120px;
+  top:55px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.order-visual h3{
+  font:700 34px Georgia;
+  margin:0 0 8px;
+}
+
+.order-visual p{
+  line-height:1.55;
+  margin:0;
+}
+
+.order-card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:26px;
+}
+
+.order-card h2{
+  font:700 38px Georgia;
+  margin:0 0 10px;
+}
+
+.order-card p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.order-card label{
+  display:block;
+  font-weight:700;
+  margin:13px 0 6px;
+}
+
+.order-card input,
+.order-card select,
+.order-card textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #d7cec0;
+  border-radius:11px;
+  font:inherit;
+}
+
+.order-card textarea{
+  min-height:95px;
+  resize:vertical;
+}
+
+.order-msg{
+  display:none;
+  margin-top:14px;
+  padding:12px;
+  border-radius:10px;
+  background:#edf6f2;
+  color:var(--verde);
+}
+
+/* PROYECTO Y LOGO */
+
+.project{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:38px;
+  align-items:center;
+}
+
+.project-logo{
+  min-height:330px;
+  border-radius:28px;
+  border:1px dashed #cdbd9f;
+  background:white;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:25px;
+}
+
+.logo-placeholder{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  border:4px solid var(--oro);
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,#fff,#f8ecd7);
+  color:var(--verde);
+  font:700 48px Georgia;
+}
+
+.project-copy p{
+  color:#59635e;
+  line-height:1.7;
+}
+
+/* CONTACTO */
+
+.contact{
+  background:#f5eee2;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.contact-card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:22px;
+}
+
+footer{
+  background:#102f29;
+  color:white;
+  padding:30px 20px;
+}
+
+.footer-inner{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.admin-link{
+  opacity:.7;
+  font-size:13px;
+}
+
+/* CELULAR */
+
+@media(max-width:980px){
+
+  .links{
+    display:none;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+
+  .order-wrap,
+  .project{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:650px){
+
+  .hero{
+    padding-top:45px;
+  }
+
+  .hero h1{
+    font-size:42px;
+  }
+
+  .products{
+    grid-template-columns:1fr;
+  }
+
+  .heading{
+    align-items:start;
+    flex-direction:column;
+  }
+
+  .tradition-inner,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .feature{
+    grid-template-columns:1fr;
+  }
+
+  .feature-visual{
+    height:120px;
+  }
+
+  .product-media{
+    height:250px;
+  }
+}
+
 </style>
 </head>
+
 <body>
 
-<div class="topbar">● Catálogo conectado · Raíces y Tradición 360</div>
+<div class="topbar">
+  ● Catálogo conectado · Raíces y Tradición 360
+</div>
 
 <header>
-  <div class="nav">
-    <a class="brand" href="#inicio">
-      <span class="logo">R</span>
-      <span>
-        <strong>Raíces & Tradición</strong>
-        <small>360 · Artesanía con propósito</small>
-      </span>
-    </a>
 
-    <nav class="links">
-      <a href="#catalogo">Catálogo</a>
-      <a href="#impacto">Impacto</a>
-      <a href="#proyecto">Proyecto</a>
-      <a class="cta" href="#contacto">Contacto</a>
-    </nav>
-  </div>
+<div class="nav">
+
+<a class="brand" href="#inicio">
+
+<span class="logo">
+R360
+</span>
+
+<span>
+<strong>Raíces y Tradición 360</strong>
+<small>Artesanía · Cultura · Emprendimiento</small>
+</span>
+
+</a>
+
+<nav class="links">
+
+<a href="#tradicion">
+Tradición
+</a>
+
+<a href="#catalogo">
+Catálogo
+</a>
+
+<a href="#pedido">
+Pedido
+</a>
+
+<a href="#proyecto">
+Proyecto
+</a>
+
+<a class="cta" href="#contacto">
+Contacto
+</a>
+
+</nav>
+
+</div>
+
 </header>
 
-<main>
-<section class="hero" id="inicio">
-  <div>
-    <div class="eyebrow">Emprendimiento estudiantil · Llano Culebra</div>
-    <h1>Tradición que se crea, <em>identidad que se comparte.</em></h1>
-    <p>
-      Una vitrina digital para mostrar artesanía local, reconocer a quienes la elaboran
-      y acercar nuestros productos culturales a más personas.
-    </p>
-    <div class="hero-actions">
-      <a class="btn primary" href="#catalogo">Ver catálogo</a>
-      <a class="btn secondary" href="#proyecto">Conocer el proyecto</a>
-    </div>
-  </div>
 
-  <div class="hero-art" aria-hidden="true">
-    <div class="sun"></div>
-    <div class="art a1">CHAQUIRAS</div>
-    <div class="art a2">TEXTILES</div>
-    <div class="art a3">TRADICIÓN</div>
-    <div class="note"><strong>Hecho con identidad</strong><br><small>Artesanía · Cultura · Comunidad</small></div>
-  </div>
+<main>
+
+
+<!-- PORTADA -->
+
+<section class="hero" id="inicio">
+
+<div>
+
+<div class="eyebrow">
+Emprendimiento estudiantil · Llano Culebra
+</div>
+
+<h1>
+Tradición que se crea,
+<em>identidad que se comparte.</em>
+</h1>
+
+<p>
+Raíces y Tradición 360 presenta el valor de nuestras
+expresiones artesanales, el proceso de elaboración
+y los productos que representan la identidad cultural
+de nuestra comunidad.
+</p>
+
+<div class="hero-actions">
+
+<a class="btn primary" href="#catalogo">
+Ver catálogo
+</a>
+
+<a class="btn secondary" href="#pedido">
+Realizar pedido
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-art">
+
+<div class="hero-symbol">
+✦ R360 ✦
+</div>
+
+<div class="ribbon">
+
+<b>
+Tradición viva
+</b>
+
+<br>
+
+Artesanía, bordado, chaquiras, naguas y camisas.
+
+</div>
+
+</div>
+
 </section>
+
+
+<!-- LOS 6 CAMBIOS -->
+
+<section class="section" id="tradicion">
+
+<div class="heading">
+
+<div>
+
+<div class="eyebrow">
+Nuestra tradición
+</div>
+
+<h2>
+Cómo nace cada creación
+</h2>
+
+</div>
+
+<p>
+Conoce el proceso artesanal, nuestra vestimenta
+tradicional, el bordado y los productos que reflejan
+la identidad cultural.
+</p>
+
+</div>
+
+
+<div class="feature-grid">
+
+
+<article class="feature">
+
+<div class="feature-visual">
+🪡
+</div>
+
+<div>
+
+<h3>
+Confección artesanal
+</h3>
+
+<p>
+Aquí colocaremos una fotografía de una persona
+cosiendo una nagua o camisa tradicional.
+</p>
+
+</div>
+
+</article>
+
+
+<article class="feature">
+
+<div class="feature-visual">
+👗
+</div>
+
+<div>
+
+<h3>
+Vestimenta e identidad
+</h3>
+
+<p>
+Espacio para mostrar niños y niñas vestidos
+con naguas, camisas y elementos de nuestra tradición.
+</p>
+
+</div>
+
+</article>
+
+
+<article class="feature">
+
+<div class="feature-visual">
+🧵
+</div>
+
+<div>
+
+<h3>
+Bordado
+</h3>
+
+<p>
+Detalles de colores, diseños y técnicas utilizadas
+en el trabajo artesanal.
+</p>
+
+</div>
+
+</article>
+
+
+<article class="feature">
+
+<div class="feature-visual">
+📿
+</div>
+
+<div>
+
+<h3>
+Chaquiras y accesorios
+</h3>
+
+<p>
+Chaquiras, pulseras y diferentes accesorios
+elaborados con creatividad e identidad cultural.
+</p>
+
+</div>
+
+</article>
+
+
+</div>
+
+</section>
+
+
+<!-- TRADICIÓN -->
+
+<section class="tradition-strip">
+
+<div class="tradition-inner">
+
+
+<article class="tradition-card">
+
+<div class="icon">
+🪡
+</div>
+
+<h3>
+Proceso
+</h3>
+
+<p>
+Confección, costura y elaboración artesanal paso a paso.
+</p>
+
+</article>
+
+
+<article class="tradition-card">
+
+<div class="icon">
+🧶
+</div>
+
+<h3>
+Tradición
+</h3>
+
+<p>
+Diseños y técnicas que conservan elementos culturales.
+</p>
+
+</article>
+
+
+<article class="tradition-card">
+
+<div class="icon">
+✨
+</div>
+
+<h3>
+Identidad
+</h3>
+
+<p>
+Productos que representan historia,
+creatividad y pertenencia.
+</p>
+
+</article>
+
+
+</div>
+
+</section>
+
+
+<!-- CATÁLOGO -->
 
 <section class="section" id="catalogo">
-  <div class="heading">
-    <div>
-      <div class="eyebrow">Nuestro catálogo</div>
-      <h2>Productos con historia</h2>
-    </div>
-    <p>
-      Explora artículos artesanales elaborados con creatividad, identidad cultural
-      y dedicación.
-    </p>
-  </div>
 
-  <div id="status" class="status">Cargando productos...</div>
-  <div id="filters" class="filters"></div>
-  <div id="products" class="products"></div>
+<div class="heading">
+
+<div>
+
+<div class="eyebrow">
+Catálogo
+</div>
+
+<h2>
+Productos con historia
+</h2>
+
+</div>
+
+<p>
+Consulta las fotografías, precios, categorías,
+descripciones y disponibilidad de nuestros productos.
+</p>
+
+</div>
+
+
+<div id="status" class="status">
+Cargando productos...
+</div>
+
+
+<div id="filters" class="filters">
+</div>
+
+
+<div id="products" class="products">
+</div>
+
+
 </section>
 
-<section class="impact" id="impacto">
-  <div class="impact-inner">
-    <div class="eyebrow" style="color:#f4c97b">Impacto</div>
-    <h2 style="font:700 42px Georgia,serif;margin:8px 0">Más que una vitrina digital</h2>
-    <div class="impact-grid">
-      <div class="impact-card">
-        <h3>Identidad cultural</h3>
-        <p>Visibiliza técnicas, diseños y expresiones vinculadas a nuestra comunidad.</p>
-      </div>
-      <div class="impact-card">
-        <h3>Emprendimiento</h3>
-        <p>Fortalece habilidades de organización, promoción, ventas y atención al cliente.</p>
-      </div>
-      <div class="impact-card">
-        <h3>Reconocimiento</h3>
-        <p>Promueve el respeto y reconocimiento de las personas que elaboran cada producto.</p>
-      </div>
-    </div>
-  </div>
+
+<!-- PEDIDO -->
+
+<section class="order-section" id="pedido">
+
+<div class="order-wrap">
+
+
+<div class="order-visual">
+
+<h3>
+Pedido híbrido
+</h3>
+
+<p>
+Aquí colocaremos la imagen de una persona
+elaborando o cosiendo una nagua o camisa.
+</p>
+
+</div>
+
+
+<div class="order-card">
+
+<div class="eyebrow">
+Prueba de pedido
+</div>
+
+<h2>
+Solicita tu producto
+</h2>
+
+<p>
+Puedes realizar una prueba de pedido.
+Más adelante podemos conectarlo directamente
+con WhatsApp o con un sistema de pedidos.
+</p>
+
+
+<label>
+Nombre
+
+<input
+  id="orderName"
+  type="text"
+  placeholder="Nombre del cliente"
+>
+
+</label>
+
+
+<label>
+Producto
+
+<select id="orderProduct">
+
+<option value="">
+Selecciona un producto
+</option>
+
+</select>
+
+</label>
+
+
+<label>
+Cantidad
+
+<input
+  id="orderQty"
+  type="number"
+  min="1"
+  value="1"
+>
+
+</label>
+
+
+<label>
+Detalle o personalización
+
+<textarea
+  id="orderDetail"
+  placeholder="Talla, colores, diseño u otra indicación"
+></textarea>
+
+</label>
+
+
+<button
+  class="btn primary"
+  type="button"
+  onclick="prepareOrder()"
+>
+
+Preparar pedido
+
+</button>
+
+
+<div
+  id="orderMsg"
+  class="order-msg">
+</div>
+
+
+</div>
+
+</div>
+
 </section>
+
+
+<!-- LOGO / PROYECTO -->
 
 <section class="section" id="proyecto">
-  <div class="story">
-    <div class="story-art">R360</div>
-    <div class="story-copy">
-      <div class="eyebrow">El proyecto</div>
-      <h2 style="font:700 42px Georgia,serif;margin:8px 0">Raíces y Tradición 360</h2>
-      <p>
-        Es una propuesta de emprendimiento estudiantil que integra cultura, creatividad
-        y herramientas digitales para presentar productos artesanales de forma organizada,
-        accesible y atractiva.
-      </p>
-      <p>
-        El catálogo permite consultar productos, precios, disponibilidad y fotografías,
-        mientras el panel de administración facilita mantener la información actualizada.
-      </p>
-    </div>
-  </div>
+
+<div class="project">
+
+
+<div class="project-logo">
+
+<div>
+
+<div class="logo-placeholder">
+R360
+</div>
+
+<p style="color:var(--muted)">
+Aquí colocaremos el logo profesional que elijas.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="project-copy">
+
+<div class="eyebrow">
+Identidad del proyecto
+</div>
+
+<h2
+style="
+font:700 42px Georgia,serif;
+margin:8px 0;
+">
+
+Raíces y Tradición 360
+
+</h2>
+
+
+<p>
+El proyecto integra cultura, artesanía
+y emprendimiento estudiantil en una vitrina digital
+que puede consultarse desde computadora,
+tablet o celular.
+</p>
+
+
+<p>
+El catálogo se actualiza directamente desde
+el panel administrativo. Las fotografías,
+precios y disponibilidad pueden cambiarse
+sin modificar manualmente esta página.
+</p>
+
+
+</div>
+
+</div>
+
 </section>
+
+
+<!-- CONTACTO -->
 
 <section class="contact" id="contacto">
-  <div class="section">
-    <div class="heading">
-      <div>
-        <div class="eyebrow">Contacto</div>
-        <h2>Conecta con el proyecto</h2>
-      </div>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <h3>Centro educativo</h3>
-        <p>Centro Educativo Llano Culebra</p>
-      </div>
-      <div class="contact-card">
-        <h3>Proyecto</h3>
-        <p>Raíces y Tradición 360</p>
-      </div>
-      <div class="contact-card">
-        <h3>Catálogo digital</h3>
-        <p>Disponible desde computadora, tablet y celular.</p>
-      </div>
-    </div>
-  </div>
+
+<div class="section">
+
+
+<div class="heading">
+
+<div>
+
+<div class="eyebrow">
+Contacto
+</div>
+
+<h2>
+Conecta con el proyecto
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="contact-grid">
+
+
+<div class="contact-card">
+
+<h3>
+Centro educativo
+</h3>
+
+<p>
+Centro Educativo Llano Culebra
+</p>
+
+</div>
+
+
+<div class="contact-card">
+
+<h3>
+Proyecto
+</h3>
+
+<p>
+Raíces y Tradición 360
+</p>
+
+</div>
+
+
+<div class="contact-card">
+
+<h3>
+Acceso
+</h3>
+
+<p>
+Disponible desde computadora,
+tablet y celular.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
 </section>
+
+
 </main>
 
+
 <footer>
-  <div class="footer-inner">
-    <div>© 2026 Raíces y Tradición 360</div>
-    <a class="admin-link" href="admin.html">Administración</a>
-  </div>
+
+<div class="footer-inner">
+
+<div>
+© 2026 Raíces y Tradición 360
+</div>
+
+<a
+class="admin-link"
+href="admin.html">
+
+Administración
+
+</a>
+
+</div>
+
 </footer>
 
+
 <script>
-const SUPABASE_URL = 'https://gjmiiqdadsslgjszgswe.supabase.co';
-const API_KEY = 'sb_publishable_LQFknnAXuHgVpv9rcHVw6Q_sYc6SdPR';
+
+const SUPABASE_URL =
+'https://gjmiiqdadsslgjszgswe.supabase.co';
+
+const API_KEY =
+'sb_publishable_LQFknnAXuHgVpv9rcHVw6Q_sYc6SdPR';
+
 
 let allProducts = [];
+
 let activeCategory = 'Todos';
 
+
 const esc = (v) => String(v ?? '')
-  .replaceAll('&','&amp;')
-  .replaceAll('<','&lt;')
-  .replaceAll('>','&gt;')
-  .replaceAll('"','&quot;')
-  .replaceAll("'","&#039;");
+
+.replaceAll('&','&amp;')
+
+.replaceAll('<','&lt;')
+
+.replaceAll('>','&gt;')
+
+.replaceAll('"','&quot;')
+
+.replaceAll("'","&#039;");
+
 
 async function loadProducts(){
-  const status = document.getElementById('status');
-  const container = document.getElementById('products');
 
-  try{
-    const r = await fetch(
-      SUPABASE_URL + '/rest/v1/productos?select=*&activo=eq.true&order=id.desc',
-      { headers: { apikey: API_KEY } }
-    );
+const status =
+document.getElementById('status');
 
-    const data = await r.json();
+const container =
+document.getElementById('products');
 
-    if(!r.ok){
-      throw new Error(data.message || 'No se pudo cargar el catálogo');
-    }
 
-    allProducts = Array.isArray(data) ? data : [];
-    status.textContent = allProducts.length
-      ? 'Catálogo actualizado.'
-      : 'Todavía no hay productos publicados.';
+try{
 
-    buildFilters();
-    renderProducts();
 
-  }catch(err){
-    status.textContent = 'No se pudo cargar el catálogo: ' + err.message;
-    container.innerHTML = '<div class="empty">Intenta actualizar la página nuevamente.</div>';
-  }
+const r = await fetch(
+
+SUPABASE_URL +
+
+'/rest/v1/productos?select=*&activo=eq.true&order=id.desc',
+
+{
+
+headers:{
+
+apikey:API_KEY
+
 }
+
+}
+
+);
+
+
+const data =
+await r.json();
+
+
+if(!r.ok){
+
+throw new Error(
+
+data.message ||
+
+'No se pudo cargar el catálogo'
+
+);
+
+}
+
+
+allProducts =
+Array.isArray(data)
+? data
+: [];
+
+
+status.textContent =
+allProducts.length
+
+? 'Catálogo actualizado.'
+
+: 'Todavía no hay productos publicados.';
+
+
+buildFilters();
+
+renderProducts();
+
+fillOrderProducts();
+
+
+}
+
+catch(err){
+
+
+status.textContent =
+
+'No se pudo cargar el catálogo: '
+
++ err.message;
+
+
+container.innerHTML =
+
+'<div class="empty">' +
+
+'Intenta actualizar la página nuevamente.' +
+
+'</div>';
+
+
+}
+
+}
+
+
 
 function buildFilters(){
-  const filters = document.getElementById('filters');
-  const categories = ['Todos', ...new Set(
-    allProducts.map(p => p.categoria).filter(Boolean)
-  )];
 
-  filters.innerHTML = '';
+const filters =
+document.getElementById('filters');
 
-  categories.forEach(cat => {
-    const btn = document.createElement('button');
-    btn.textContent = cat;
-    if(cat === activeCategory) btn.classList.add('active');
 
-    btn.onclick = () => {
-      activeCategory = cat;
-      buildFilters();
-      renderProducts();
-    };
+const categories = [
 
-    filters.appendChild(btn);
-  });
+'Todos',
+
+...new Set(
+
+allProducts
+
+.map(p => p.categoria)
+
+.filter(Boolean)
+
+)
+
+];
+
+
+filters.innerHTML = '';
+
+
+categories.forEach(cat => {
+
+
+const btn =
+document.createElement('button');
+
+
+btn.textContent = cat;
+
+
+if(cat === activeCategory){
+
+btn.classList.add('active');
+
 }
+
+
+btn.onclick = () => {
+
+
+activeCategory = cat;
+
+
+buildFilters();
+
+renderProducts();
+
+
+};
+
+
+filters.appendChild(btn);
+
+
+});
+
+
+}
+
+
 
 function renderProducts(){
-  const container = document.getElementById('products');
-  const products = activeCategory === 'Todos'
-    ? allProducts
-    : allProducts.filter(p => p.categoria === activeCategory);
 
-  if(!products.length){
-    container.innerHTML = '<div class="empty">No hay productos en esta categoría.</div>';
-    return;
-  }
 
-  container.innerHTML = products.map(p => {
-    const img = p.imagen_url
-      ? `<img src="${esc(p.imagen_url)}" alt="${esc(p.nombre || 'Producto')}">`
-      : `<div style="height:240px;background:#f1ece3;display:grid;place-items:center;color:#7c817d">Sin fotografía</div>`;
+const container =
+document.getElementById('products');
 
-    const price = p.precio == null
-      ? 'Consultar'
-      : 'B/. ' + Number(p.precio).toFixed(2);
 
-    return `
-      <article class="product">
-        ${img}
-        <div class="product-body">
-          <div class="code">${esc(p.codigo || '')}</div>
-          <h3>${esc(p.nombre || 'Producto')}</h3>
-          <div class="badges">
-            ${p.categoria ? `<span class="badge">${esc(p.categoria)}</span>` : ''}
-            ${p.disponibilidad ? `<span class="badge">${esc(p.disponibilidad)}</span>` : ''}
-          </div>
-          <p class="desc">${esc(p.descripcion || '')}</p>
-          <div class="price">${price}</div>
-        </div>
-      </article>
-    `;
-  }).join('');
+const products =
+
+activeCategory === 'Todos'
+
+? allProducts
+
+: allProducts.filter(
+
+p => p.categoria === activeCategory
+
+);
+
+
+if(!products.length){
+
+
+container.innerHTML =
+
+'<div class="empty">' +
+
+'No hay productos en esta categoría.' +
+
+'</div>';
+
+
+return;
+
+
 }
 
+
+container.innerHTML =
+
+products.map(p => {
+
+
+const media =
+
+p.imagen_url
+
+?
+
+`
+<div class="product-media">
+
+<img
+
+src="${esc(p.imagen_url)}"
+
+alt="${esc(p.nombre || 'Producto')}"
+
+>
+
+</div>
+`
+
+:
+
+`
+<div
+class="product-media"
+style="color:#7c817d">
+
+Sin fotografía
+
+</div>
+`;
+
+
+const price =
+
+p.precio == null
+
+? 'Consultar'
+
+: 'B/. ' +
+
+Number(p.precio).toFixed(2);
+
+
+return `
+
+<article class="product">
+
+
+${media}
+
+
+<div class="product-body">
+
+
+<div class="code">
+
+${esc(p.codigo || '')}
+
+</div>
+
+
+<h3>
+
+${esc(p.nombre || 'Producto')}
+
+</h3>
+
+
+<div class="badges">
+
+
+${
+
+p.categoria
+
+?
+
+`
+<span class="badge">
+
+${esc(p.categoria)}
+
+</span>
+`
+
+:
+
+''
+
+}
+
+
+${
+
+p.disponibilidad
+
+?
+
+`
+<span class="badge">
+
+${esc(p.disponibilidad)}
+
+</span>
+`
+
+:
+
+''
+
+}
+
+
+</div>
+
+
+<p class="desc">
+
+${esc(p.descripcion || '')}
+
+</p>
+
+
+<div class="price">
+
+${price}
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+`;
+
+
+}).join('');
+
+
+}
+
+
+
+function fillOrderProducts(){
+
+
+const select =
+
+document.getElementById('orderProduct');
+
+
+select.innerHTML =
+
+'<option value="">' +
+
+'Selecciona un producto' +
+
+'</option>';
+
+
+allProducts.forEach(p => {
+
+
+const option =
+
+document.createElement('option');
+
+
+option.value =
+p.nombre || '';
+
+
+option.textContent =
+
+(p.nombre || 'Producto')
+
++
+
+(
+
+p.precio != null
+
+?
+
+' · B/. ' +
+
+Number(p.precio).toFixed(2)
+
+:
+
+''
+
+);
+
+
+select.appendChild(option);
+
+
+});
+
+
+}
+
+
+
+function prepareOrder(){
+
+
+const name =
+
+document
+.getElementById('orderName')
+.value
+.trim();
+
+
+const product =
+
+document
+.getElementById('orderProduct')
+.value;
+
+
+const qty =
+
+document
+.getElementById('orderQty')
+.value;
+
+
+const detail =
+
+document
+.getElementById('orderDetail')
+.value
+.trim();
+
+
+const msg =
+
+document
+.getElementById('orderMsg');
+
+
+if(!name || !product){
+
+
+msg.textContent =
+
+'Completa el nombre y selecciona un producto.';
+
+
+msg.style.display =
+'block';
+
+
+return;
+
+
+}
+
+
+msg.innerHTML =
+
+'<strong>Pedido de prueba preparado:</strong>'
+
++
+
+'<br>Cliente: '
+
++
+
+esc(name)
+
++
+
+'<br>Producto: '
+
++
+
+esc(product)
+
++
+
+'<br>Cantidad: '
+
++
+
+esc(qty)
+
++
+
+(
+
+detail
+
+?
+
+'<br>Detalle: '
+
++
+
+esc(detail)
+
+:
+
+''
+
+)
+
++
+
+'<br><br>Después podemos conectarlo directamente a WhatsApp.';
+
+
+msg.style.display =
+'block';
+
+
+}
+
+
+
 loadProducts();
+
+
 </script>
+
 
 </body>
 </html>
