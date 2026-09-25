@@ -92,7 +92,8 @@ button:disabled{opacity:.6;cursor:not-allowed}
       <input id="productId" type="hidden">
       <input id="oldImageUrl" type="hidden">
 
-      <label>Código<input id="codigo" placeholder="R360-CHQ-001"></label>
+      <label>Código<input id="codigo" placeholder="Se genera automáticamente" readonly></label>
+      <div class="muted" style="margin-top:-6px;margin-bottom:8px">El código se asigna automáticamente según la categoría.</div>
       <label>Nombre<input id="nombre" placeholder="Nombre del producto"></label>
 
       <label>Categoría
@@ -207,6 +208,7 @@ function showAdmin(){
   $('adminView').classList.remove('hidden');
   $('userEmail').textContent='Sesión: '+currentEmail;
   loadProducts();
+  if(!$('productId').value) generateCode();
 }
 
 function showLogin(){
@@ -291,6 +293,60 @@ function logout(){
   showLogin();
 }
 
+
+const CODE_PREFIXES = {
+  'Chaquiras':'CHQ',
+  'Textiles':'TEX',
+  'Accesorios':'ACC',
+  'Naguas':'NAG',
+  'Camisas':'CAM',
+  'Otros':'OTR'
+};
+
+async function generateCode(){
+  // Do not change the code while editing an existing product.
+  if($('productId').value) return $('codigo').value;
+
+  const categoria = $('categoria').value || 'Otros';
+  const prefix = CODE_PREFIXES[categoria] || 'OTR';
+  const base = 'R360-' + prefix + '-';
+
+  $('codigo').value = 'Generando...';
+
+  try{
+    const r = await fetch(
+      SUPABASE_URL + '/rest/v1/productos?select=codigo&codigo=like.' +
+      encodeURIComponent(base + '*'),
+      {headers:authHeaders()}
+    );
+
+    const data = await r.json();
+
+    if(!r.ok){
+      throw new Error(data.message || 'No se pudo consultar los códigos');
+    }
+
+    let maxNum = 0;
+
+    for(const item of data){
+      const code = String(item.codigo || '');
+      if(code.startsWith(base)){
+        const n = parseInt(code.substring(base.length), 10);
+        if(Number.isFinite(n) && n > maxNum) maxNum = n;
+      }
+    }
+
+    const next = String(maxNum + 1).padStart(3, '0');
+    $('codigo').value = base + next;
+    return $('codigo').value;
+
+  }catch(err){
+    $('codigo').value = base + '001';
+    show('formMsg', 'No se pudo verificar el último código. Se propone ' + $('codigo').value + '.', true);
+    return $('codigo').value;
+  }
+}
+
 function clearForm(){
   $('productId').value='';
   $('oldImageUrl').value='';
@@ -305,7 +361,14 @@ function clearForm(){
   $('preview').src='';
   $('preview').style.display='none';
   $('formTitle').textContent='Nuevo producto';
+  hide('formMsg');
+  generateCode();
 }
+
+
+$('categoria').addEventListener('change',()=>{
+  if(!$('productId').value) generateCode();
+});
 
 $('foto').addEventListener('change',e=>{
   const f=e.target.files[0];
@@ -364,6 +427,10 @@ async function saveProduct(event){
   if(saveButton){
     saveButton.disabled=true;
     saveButton.textContent='Guardando...';
+  }
+
+  if(!$('productId').value && (!$('codigo').value.trim() || $('codigo').value==='Generando...')){
+    await generateCode();
   }
 
   if(!$('codigo').value.trim() || !$('nombre').value.trim()){
