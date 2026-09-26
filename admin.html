@@ -1,2721 +1,501 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>Administración | Raíces y Tradición 360</title>
-
+<title>Raíces y Tradición 360</title>
+<meta name="description" content="Artesanía, cultura y emprendimiento estudiantil de Raíces y Tradición 360.">
 <style>
 :root{
-  --green:#0e493f;
-  --cream:#f7f1e7;
-  --line:#ded8cd;
-  --muted:#6e746f;
-  --red:#8e2f2f;
+  --verde:#0b4d3f;--verde2:#063b31;--crema:#fff8eb;--oro:#d6a13b;
+  --terracota:#a94f28;--texto:#2c241d;--muted:#6d6257;--line:#ead7b6;
 }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--texto);background:#fffaf1}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
 
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--cream);
-  color:#202925;
+.bead-strip{
+  height:14px;
+  background:
+    radial-gradient(circle at 7px 7px,#da3d28 0 4px,transparent 4.5px) 0 0/21px 14px,
+    radial-gradient(circle at 7px 7px,#eeb42e 0 4px,transparent 4.5px) 10px 0/21px 14px,
+    var(--verde);
+  border-top:2px solid #8b5d18;border-bottom:2px solid #8b5d18;
 }
 
 header{
-  background:var(--green);
-  color:#fff;
-  padding:18px 5vw;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  gap:20px;
-  flex-wrap:wrap;
+  position:sticky;top:0;z-index:60;background:rgba(255,248,235,.97);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
 }
-
-header a{
-  color:#fff;
+.nav{
+  max-width:1220px;margin:auto;min-height:88px;padding:7px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
 }
-
-.wrap{
-  max-width:1200px;
-  margin:28px auto;
-  padding:0 18px;
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{
+  width:102px;height:76px;overflow:hidden;border-radius:18px;background:#fff;
 }
-
-.card{
-  background:#fff;
-
-  border:1px solid var(--line);
-  border-radius:18px;
-
-  padding:22px;
-
-  box-shadow:0 12px 30px #0000000d;
+.brand-mark img{
+  width:100%;height:150px;object-fit:cover;object-position:center top;
 }
+.brand strong{display:block;color:var(--verde);font:700 22px Georgia,serif}
+.brand small{color:var(--muted)}
+.menu{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:700}
+.menu a:hover{color:var(--terracota)}
+.menu .admin{background:var(--verde);color:#fff;padding:10px 16px;border-radius:999px}
 
-#loginView{
-  max-width:470px;
-  margin:55px auto;
+.hero{
+  min-height:620px;
+  background-image:url("https://gjmiiqdadsslgjszgswe.supabase.co/storage/v1/object/public/productos/fondo.jpg.jpg");
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  display:flex;align-items:flex-end;justify-content:center;padding:30px 18px;
 }
-
-label{
-  display:block;
-  font-weight:700;
-  margin:12px 0;
+.hero-actions{
+  width:min(900px,94%);display:flex;justify-content:center;gap:12px;flex-wrap:wrap;
+  background:rgba(255,250,240,.94);border:1px solid #ead5ab;border-radius:22px;
+  padding:14px;box-shadow:0 14px 35px #0003;
 }
+.btn{border:0;border-radius:999px;padding:12px 18px;font-weight:800;cursor:pointer;display:inline-flex}
+.btn-primary{background:var(--verde);color:#fff}
+.btn-light{background:#fff;color:var(--verde);border:1px solid var(--verde)}
 
-input,
-select,
-textarea{
-  width:100%;
-
-  padding:12px;
-
-  border:1px solid #d8d1c7;
-  border-radius:10px;
-
-  margin-top:6px;
-
-  font:inherit;
+.features{
+  max-width:1050px;margin:0 auto;padding:24px 20px 8px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
 }
-
-textarea{
-  resize:vertical;
+.feature-badge{
+  background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;
+  display:flex;align-items:center;justify-content:center;gap:9px;text-align:center;
+  box-shadow:0 8px 20px #0000000c;font-weight:800;color:var(--verde);
 }
+.feature-badge span{font-size:24px}
 
-button{
-  cursor:pointer;
+.section{max-width:1220px;margin:auto;padding:68px 20px}
+.heading{text-align:center;margin-bottom:30px}
+.eyebrow{color:var(--terracota);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:800}
+.heading h2{font:700 44px Georgia,serif;color:var(--verde);margin:8px 0}
+.heading p{max-width:760px;margin:0 auto;color:var(--muted);line-height:1.6}
+
+.culture-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.culture-card{
+  background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;
+  box-shadow:0 12px 28px #00000012;position:relative;
 }
-
-button:disabled{
-  opacity:.55;
-  cursor:not-allowed;
+.culture-photo{
+  width:100%;height:255px;background-size:cover;background-position:center;background-repeat:no-repeat;
 }
-
-.primary{
-  background:var(--green);
-  color:#fff;
-
-  border:0;
-  border-radius:10px;
-
-  padding:12px 18px;
-
-  font-weight:700;
+.confe-img{
+  background-image:url("https://gjmiiqdadsslgjszgswe.supabase.co/storage/v1/object/public/productos/confeccion.jpg");
 }
-
-.secondary{
-  background:#fff;
-  color:var(--green);
-
-  border:1px solid var(--green);
-  border-radius:10px;
-
-  padding:11px 15px;
-
-  font-weight:700;
+.chaquira-img{
+  background-image:url("https://gjmiiqdadsslgjszgswe.supabase.co/storage/v1/object/public/productos/chaquiras.jpg");
 }
-
-.danger{
-  background:var(--red);
-  color:#fff;
-
-  border:0;
-  border-radius:9px;
-
-  padding:9px 12px;
+.tradicion-img{
+  min-height:365px;height:100%;
+  background-image:url("https://gjmiiqdadsslgjszgswe.supabase.co/storage/v1/object/public/productos/tradicion.jpg");
 }
-
-.hidden{
-  display:none !important;
+.culture-copy{padding:18px;text-align:center}
+.culture-copy h3{color:var(--verde);margin:0 0 8px;font-size:20px}
+.culture-copy p{margin:0;color:var(--muted);line-height:1.55}
+.culture-overlay{
+  position:absolute;inset:0;display:flex;align-items:flex-end;
+  background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,.06) 65%);
 }
+.culture-overlay .culture-copy{width:100%;padding:24px}
+.culture-overlay h3,.culture-overlay p{color:#fff}
 
-.notice{
-  padding:11px 13px;
-  border-radius:10px;
-
-  margin:12px 0;
-
-  background:#edf6f2;
-  color:var(--green);
-
-  display:none;
+.catalog-wrap{
+  background:
+    linear-gradient(rgba(255,249,238,.96),rgba(255,249,238,.96)),
+    url("https://gjmiiqdadsslgjszgswe.supabase.co/storage/v1/object/public/productos/fondo.jpg.jpg") center/cover;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
 }
-
-.error{
-  background:#fdeaea;
-  color:#8b2020;
+.filters{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filters button{
+  border:1px solid var(--line);background:#fff;padding:9px 14px;border-radius:999px;
+  cursor:pointer;font-weight:700;
 }
-
-.grid{
-  display:grid;
-  grid-template-columns:390px 1fr;
-
-  gap:22px;
-
-  align-items:start;
-}
-
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-
-  align-items:center;
-
-  margin-bottom:20px;
-
-  flex-wrap:wrap;
-}
-
-.products{
-  display:grid;
-  gap:14px;
-}
-
+.filters button.active{background:var(--verde);color:#fff}
+.status{text-align:center;color:var(--muted);margin-bottom:20px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .product{
-  display:grid;
-
-  grid-template-columns:110px 1fr auto;
-
-  gap:15px;
-
-  align-items:center;
-
-  border:1px solid var(--line);
-  border-radius:14px;
-
-  padding:12px;
+  background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  box-shadow:0 14px 28px #00000012;
 }
-
-.product img{
-  width:110px;
-  height:95px;
-
-  object-fit:contain;
-
-  border-radius:10px;
-
-  background:#fff;
+.product-media{
+  height:280px;padding:15px;display:flex;align-items:center;justify-content:center;
+  background:#fff;border-bottom:1px solid #f0e5d3;
 }
+.product-media img{width:100%;height:100%;object-fit:contain}
+.product-body{padding:18px}
+.code{font-size:12px;color:#8a7b6d}
+.product h3{font:700 24px Georgia,serif;color:var(--verde);margin:7px 0}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}
+.badge{background:#f3e8d6;border-radius:999px;padding:6px 9px;font-size:12px}
+.desc{color:var(--muted);line-height:1.5}
+.price{font-size:22px;font-weight:900;color:var(--terracota)}
+.empty{grid-column:1/-1;background:#fff;border-radius:18px;padding:40px;text-align:center;color:var(--muted)}
 
-.muted{
-  color:var(--muted);
-  font-size:13px;
+.story{background:var(--verde);color:#fff}
+.story-inner{max-width:1220px;margin:auto;padding:60px 20px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.story h2{font:700 40px Georgia,serif;margin:0 0 10px}
+.story p{color:#eef5f2;line-height:1.7}
+.story-points{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.point{background:#ffffff10;border:1px solid #ffffff28;border-radius:16px;padding:18px;text-align:center}
+
+.order{max-width:1050px;margin:auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}
+.order-art{
+  min-height:420px;border-radius:26px;
+  background:url("https://gjmiiqdadsslgjszgswe.supabase.co/storage/v1/object/public/productos/tradicion.jpg") center/cover;
+  box-shadow:0 15px 30px #0002;
 }
-
-.price{
-  font-weight:800;
-  color:var(--green);
-
-  font-size:18px;
+.order-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:26px}
+.order-card h3{font:700 32px Georgia,serif;color:var(--verde);margin:0 0 8px}
+.order-card p{color:var(--muted);line-height:1.55}
+.order-card label{display:block;font-weight:700;margin:13px 0 6px}
+.order-card input,.order-card select,.order-card textarea{
+  width:100%;padding:12px;border:1px solid #d9cbb5;border-radius:10px;font:inherit;
 }
+.order-card textarea{min-height:90px}
+.order-msg{display:none;margin-top:13px;padding:12px;background:#edf6f1;color:var(--verde);border-radius:10px}
 
-.row-actions{
-  display:flex;
-  gap:8px;
-  flex-direction:column;
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.contact-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+.contact-card h3{color:var(--verde)}
+
+footer{background:var(--verde2);color:#fff;padding:28px 20px}
+.footer{max-width:1220px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+@media(max-width:950px){
+  .menu{display:none}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .culture-grid,.story-inner,.order{grid-template-columns:1fr}
+  .products{grid-template-columns:repeat(2,1fr)}
 }
-
-.preview{
-  margin-top:10px;
-
-  max-width:100%;
-  max-height:230px;
-
-  object-fit:contain;
-
-  border-radius:12px;
-
-  display:none;
-}
-
-.badge{
-  display:inline-block;
-
-  padding:5px 8px;
-
-  border-radius:999px;
-
-  background:#f0eadf;
-
-  font-size:12px;
-
-  margin-right:5px;
-}
-
-.login-actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-
-  margin-top:14px;
-}
-
-.code-box{
-  background:#f4f8f6;
-  border:1px solid #bdd3ca;
-  font-weight:800;
-  color:var(--green);
-}
-
-@media(max-width:900px){
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-}
-
 @media(max-width:620px){
-
-  .product{
-    grid-template-columns:85px 1fr;
-  }
-
-  .product img{
-    width:85px;
-    height:78px;
-  }
-
-  .row-actions{
-    grid-column:1/-1;
-    flex-direction:row;
-  }
-
+  .brand-mark{width:82px;height:62px}
+  .brand-mark img{height:125px}
+  .brand strong{font-size:17px}
+  .brand small{font-size:11px}
+  .hero{min-height:455px}
+  .features{grid-template-columns:1fr}
+  .products{grid-template-columns:1fr}
+  .product-media{height:250px}
+  .story-points,.contact-grid{grid-template-columns:1fr}
+  .heading h2{font-size:35px}
 }
 </style>
 </head>
-
 <body>
 
+<div class="bead-strip"></div>
+
 <header>
+  <div class="nav">
+    <a class="brand" href="#inicio">
+      <div class="brand-mark">
+        <img src="https://gjmiiqdadsslgjszgswe.supabase.co/storage/v1/object/public/productos/logo.jpg.png" alt="Símbolo Raíces y Tradición 360">
+      </div>
+      <div>
+        <strong>Raíces y Tradición 360</strong>
+        <small>Artesanía · Cultura · Emprendimiento</small>
+      </div>
+    </a>
 
-<div>
-
-<strong style="font-size:23px">
-Raíces y Tradición 360
-</strong>
-
-<br>
-
-<small>
-Panel de administración
-</small>
-
-</div>
-
-<a href="index.html">
-Ver página
-</a>
-
+    <nav class="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#cultura">Nuestra cultura</a>
+      <a href="#catalogo">Productos</a>
+      <a href="#pedido">Pedido</a>
+      <a href="#contacto">Contacto</a>
+      <a class="admin" href="admin.html">Administración</a>
+    </nav>
+  </div>
 </header>
 
-
-<div class="wrap">
-
-
-<!-- LOGIN -->
-
-<section
-  id="loginView"
-  class="card"
->
-
-<h2>
-Acceso de administrador
-</h2>
-
-<p class="muted">
-Ingresa con tu usuario de Supabase.
-</p>
-
-
-<div
-  id="loginMsg"
-  class="notice"
-></div>
-
-
-<div
-  id="recoveryMsg"
-  class="notice"
-></div>
-
-
-<label>
-
-Correo
-
-<input
-  id="email"
-  type="email"
-  value="raul.orocu@gmail.com"
->
-
-</label>
-
-
-<label>
-
-Contraseña
-
-<input
-  id="password"
-  type="password"
->
-
-</label>
-
-
-<div class="login-actions">
-
-<button
-  id="loginBtn"
-  class="primary"
-  type="button"
->
-
-Entrar
-
-</button>
-
-
-<button
-  id="forgotBtn"
-  class="secondary"
-  type="button"
->
-
-¿Olvidaste tu contraseña?
-
-</button>
-
-</div>
-
+<section class="hero" id="inicio">
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#catalogo">Explorar productos</a>
+    <a class="btn btn-light" href="#cultura">Conoce nuestra historia</a>
+    <a class="btn btn-light" href="#pedido">Realizar pedido</a>
+  </div>
 </section>
 
-
-<!-- ADMIN -->
-
-<section
-  id="adminView"
-  class="hidden"
->
-
-<div class="topbar">
-
-<div>
-
-<h2 style="margin-bottom:5px">
-Administrar catálogo
-</h2>
-
-<div
-  id="userEmail"
-  class="muted"
-></div>
-
+<div class="features">
+  <div class="feature-badge"><span>🧵</span>Artesano 100%</div>
+  <div class="feature-badge"><span>🌿</span>100% etnia</div>
+  <div class="feature-badge"><span>❤️</span>Apoyamos a nuestros artesanos</div>
+  <div class="feature-badge"><span>🚚</span>Envíos a todo Panamá</div>
 </div>
 
-
-<div>
-
-<button
-  id="newBtn"
-  class="primary"
-  type="button"
->
-
-+ Nuevo producto
-
-</button>
-
-
-<button
-  id="logoutBtn"
-  class="secondary"
-  type="button"
->
-
-Cerrar sesión
-
-</button>
-
-</div>
-
-</div>
-
-
-<div class="grid">
-
-
-<!-- FORMULARIO -->
-
-<div class="card">
-
-<form
-  id="productForm"
-  onsubmit="saveProduct(event); return false;"
->
-
-
-<h3 id="formTitle">
-Nuevo producto
-</h3>
-
-
-<div
-  id="formMsg"
-  class="notice"
-></div>
-
-
-<input
-  id="productId"
-  type="hidden"
->
-
-
-<input
-  id="oldImageUrl"
-  type="hidden"
->
-
-
-<label>
-
-Código
-
-<input
-  id="codigo"
-  class="code-box"
-  placeholder="Se genera automáticamente"
-  readonly
->
-
-</label>
-
-
-<div
-  class="muted"
-  style="margin-top:-6px;margin-bottom:10px"
->
-
-El código se asigna automáticamente según la categoría.
-
-</div>
-
-
-<label>
-
-Nombre
-
-<input
-  id="nombre"
-  placeholder="Nombre del producto"
->
-
-</label>
-
-
-<label>
-
-Categoría
-
-<select id="categoria">
-
-<option>
-Accesorios
-</option>
-
-<option>
-Chaquiras
-</option>
-
-<option>
-Textiles
-</option>
-
-<option>
-Naguas
-</option>
-
-<option>
-Camisas
-</option>
-
-<option>
-Otros
-</option>
-
-</select>
-
-</label>
-
-
-<label>
-
-Descripción
-
-<textarea
-  id="descripcion"
-  rows="4"
-></textarea>
-
-</label>
-
-
-<label>
-
-Precio (B/.)
-
-<input
-  id="precio"
-  type="number"
-  min="0"
-  step="0.01"
->
-
-</label>
-
-
-<label>
-
-Disponibilidad
-
-<select id="disponibilidad">
-
-<option>
-Disponible
-</option>
-
-<option>
-Disponible / personalizable
-</option>
-
-<option>
-Producción limitada
-</option>
-
-<option>
-Bajo pedido
-</option>
-
-<option>
-Por talla y encargo
-</option>
-
-<option>
-Agotado
-</option>
-
-</select>
-
-</label>
-
-
-<label>
-
-Foto
-
-<input
-  id="foto"
-  type="file"
-  accept="image/*"
->
-
-</label>
-
-
-<img
-  id="preview"
-  class="preview"
->
-
-
-<label
-  style="
-    display:flex;
-    align-items:center;
-    gap:8px
-  "
->
-
-<input
-  id="activo"
-  type="checkbox"
-  checked
-  style="
-    width:auto;
-    margin:0
-  "
->
-
-Mostrar en catálogo
-
-</label>
-
-
-<div class="login-actions">
-
-<button
-  id="saveBtn"
-  class="primary"
-  type="submit"
->
-
-Guardar producto
-
-</button>
-
-
-<button
-  id="clearBtn"
-  class="secondary"
-  type="button"
->
-
-Limpiar
-
-</button>
-
-</div>
-
-
-<div
-  id="formMsgBottom"
-  class="notice"
-></div>
-
-
-</form>
-
-</div>
-
-
-<!-- LISTA -->
-
-<div class="card">
-
-<div class="topbar">
-
-<h3 style="margin:0">
-Productos
-</h3>
-
-
-<button
-  id="refreshBtn"
-  class="secondary"
-  type="button"
->
-
-Actualizar
-
-</button>
-
-</div>
-
-
-<div
-  id="listMsg"
-  class="notice"
-></div>
-
-
-<div
-  id="productList"
-  class="products"
-></div>
-
-
-</div>
-
-
-</div>
-
+<section class="section" id="cultura">
+  <div class="heading">
+    <div class="eyebrow">Cultura · Artesanía · Nuestras raíces</div>
+    <h2>Más que artesanías, son pedacitos de nuestra historia</h2>
+    <p>Raíces y Tradición 360 muestra el valor de la confección, el bordado, las chaquiras, la vestimenta tradicional y el emprendimiento de nuestra comunidad.</p>
+  </div>
+
+  <div class="culture-grid">
+    <article class="culture-card">
+      <div class="culture-photo confe-img"></div>
+      <div class="culture-copy">
+        <h3>Confección artesanal</h3>
+        <p>Mujeres Ngäbe-Buglé elaboran y cosen piezas tradicionales con dedicación, identidad y amor por su cultura.</p>
+      </div>
+    </article>
+
+    <article class="culture-card">
+      <div class="culture-photo chaquira-img"></div>
+      <div class="culture-copy">
+        <h3>Chaquiras y accesorios</h3>
+        <p>Diseños coloridos hechos con chaquiras que reflejan tradición, creatividad y trabajo artesanal.</p>
+      </div>
+    </article>
+
+    <article class="culture-card">
+      <div class="culture-photo tradicion-img"></div>
+      <div class="culture-overlay">
+        <div class="culture-copy">
+          <h3>Tradición que inspira</h3>
+          <p>Una vitrina digital para compartir la riqueza cultural, la vestimenta, el arte y el emprendimiento de nuestra comunidad.</p>
+        </div>
+      </div>
+    </article>
+  </div>
 </section>
 
-</div>
+<section class="catalog-wrap" id="catalogo">
+  <div class="section">
+    <div class="heading">
+      <div class="eyebrow">Catálogo conectado</div>
+      <h2>Nuestros productos</h2>
+      <p>Los productos agregados desde el panel de administración aparecen automáticamente aquí.</p>
+    </div>
 
+    <div id="status" class="status">Cargando productos...</div>
+    <div id="filters" class="filters"></div>
+    <div id="products" class="products"></div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="story-inner">
+    <div>
+      <div class="eyebrow" style="color:#f6c85e">Raíces y Tradición 360</div>
+      <h2>Una vitrina digital con identidad</h2>
+      <p>El proyecto combina cultura, emprendimiento estudiantil y tecnología para presentar productos artesanales de una forma moderna, accesible y respetuosa de sus raíces.</p>
+    </div>
+    <div class="story-points">
+      <div class="point"><strong>Cultura viva</strong></div>
+      <div class="point"><strong>Comunidad</strong></div>
+      <div class="point"><strong>Tradición</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pedido">
+  <div class="heading">
+    <div class="eyebrow">Pedido híbrido</div>
+    <h2>Solicita tu producto</h2>
+    <p>Prueba el pedido desde la misma página. Luego puede conectarse a WhatsApp o a un registro de pedidos.</p>
+  </div>
+
+  <div class="order">
+    <div class="order-art"></div>
+
+    <div class="order-card">
+      <h3>Preparar pedido</h3>
+
+      <label>Nombre
+        <input id="orderName" type="text" placeholder="Nombre del cliente">
+      </label>
+
+      <label>Producto
+        <select id="orderProduct">
+          <option value="">Selecciona un producto</option>
+        </select>
+      </label>
+
+      <label>Cantidad
+        <input id="orderQty" type="number" min="1" value="1">
+      </label>
+
+      <label>Detalle o personalización
+        <textarea id="orderDetail" placeholder="Talla, colores, diseño u otra indicación"></textarea>
+      </label>
+
+      <button class="btn btn-primary" type="button" onclick="prepareOrder()">Preparar pedido</button>
+      <div id="orderMsg" class="order-msg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contacto">
+  <div class="heading">
+    <div class="eyebrow">Contacto</div>
+    <h2>Conecta con el proyecto</h2>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-card"><h3>Centro educativo</h3><p>Centro Educativo Llano Culebra</p></div>
+    <div class="contact-card"><h3>Proyecto</h3><p>Raíces y Tradición 360</p></div>
+    <div class="contact-card"><h3>Acceso</h3><p>Disponible desde computadora, tablet y celular.</p></div>
+  </div>
+</section>
+
+<div class="bead-strip"></div>
+
+<footer>
+  <div class="footer">
+    <div>© 2026 Raíces y Tradición 360</div>
+    <a href="admin.html">Panel de administración</a>
+  </div>
+</footer>
 
 <script>
-
-/* ================================
-   CONFIGURACIÓN SUPABASE
-================================ */
-
-const SUPABASE_URL =
-'https://gjmiiqdadsslgjszgswe.supabase.co';
-
-const API_KEY =
-'sb_publishable_LQFknnAXuHgVpv9rcHVw6Q_sYc6SdPR';
-
-const RESET_URL =
-'https://rorcu17.github.io/Raices-Tradicion-360/reset-password.html';
-
-
-let accessToken =
-localStorage.getItem(
-  'rt360_access_token'
-) || '';
-
-
-let currentEmail =
-localStorage.getItem(
-  'rt360_email'
-) || '';
-
-
-
-/* ================================
-   FUNCIONES BÁSICAS
-================================ */
-
-const $ = id =>
-document.getElementById(id);
-
-
-
-function show(
-  id,
-  text,
-  error=false
-){
-
-const el = $(id);
-
-if(el){
-
-el.textContent = text;
-
-el.className =
-'notice' +
-(error ? ' error' : '');
-
-el.style.display =
-'block';
-
-}
-
-
-/* mensaje también debajo
-   del botón Guardar */
-
-if(id === 'formMsg'){
-
-const bottom =
-$('formMsgBottom');
-
-if(bottom){
-
-bottom.textContent =
-text;
-
-bottom.className =
-'notice' +
-(error ? ' error' : '');
-
-bottom.style.display =
-'block';
-
-}
-
-}
-
-}
-
-
-
-function hide(id){
-
-const el = $(id);
-
-if(el){
-
-el.style.display =
-'none';
-
-}
-
-
-if(id === 'formMsg'){
-
-const bottom =
-$('formMsgBottom');
-
-if(bottom){
-
-bottom.style.display =
-'none';
-
-}
-
-}
-
-}
-
-
-
-function esc(v){
-
-return String(v ?? '')
-
-.replaceAll(
-  '&',
-  '&amp;'
-)
-
-.replaceAll(
-  '<',
-  '&lt;'
-)
-
-.replaceAll(
-  '>',
-  '&gt;'
-)
-
-.replaceAll(
-  '"',
-  '&quot;'
-)
-
-.replaceAll(
-  "'",
-  '&#039;'
-);
-
-}
-
-
-
-function authHeaders(extra={}){
-
-return {
-
-'apikey':
-API_KEY,
-
-'Authorization':
-'Bearer ' + accessToken,
-
-...extra
-
-};
-
-}
-
-
-
-/* ================================
-   LOGIN
-================================ */
-
-function showAdmin(){
-
-$('loginView')
-.classList
-.add('hidden');
-
-
-$('adminView')
-.classList
-.remove('hidden');
-
-
-$('userEmail')
-.textContent =
-'Sesión: ' + currentEmail;
-
-
-loadProducts();
-
-
-if(
-  !$('productId').value
-){
-
-generateCode();
-
-}
-
-}
-
-
-
-function showLogin(){
-
-$('adminView')
-.classList
-.add('hidden');
-
-
-$('loginView')
-.classList
-.remove('hidden');
-
-}
-
-
-
-async function login(){
-
-hide('loginMsg');
-
-
-const email =
-$('email')
-.value
-.trim();
-
-
-const password =
-$('password')
-.value;
-
-
-if(
-  !email ||
-  !password
-){
-
-show(
-  'loginMsg',
-  'Escribe correo y contraseña.',
-  true
-);
-
-return;
-
-}
-
-
-show(
-  'loginMsg',
-  'Verificando acceso...'
-);
-
-
-try{
-
-
-const r =
-await fetch(
-
-SUPABASE_URL +
-
-'/auth/v1/token?grant_type=password',
-
-{
-
-method:'POST',
-
-headers:{
-
-'Content-Type':
-'application/json',
-
-'apikey':
-API_KEY
-
-},
-
-body:
-JSON.stringify({
-
-email,
-password
-
-})
-
-}
-
-);
-
-
-const data =
-await r.json();
-
-
-if(!r.ok){
-
-show(
-  'loginMsg',
-  'No se pudo iniciar sesión: ' +
-  (
-    data.msg ||
-    data.message ||
-    'credenciales incorrectas'
-  ),
-  true
-);
-
-return;
-
-}
-
-
-accessToken =
-data.access_token;
-
-
-currentEmail =
-(data.user &&
-data.user.email)
-||
-email;
-
-
-localStorage.setItem(
-  'rt360_access_token',
-  accessToken
-);
-
-
-localStorage.setItem(
-  'rt360_email',
-  currentEmail
-);
-
-
-showAdmin();
-
-
-}
-
-catch(err){
-
-show(
-  'loginMsg',
-  'Error de conexión: ' +
-  err.message,
-  true
-);
-
-}
-
-}
-
-
-
-/* ================================
-   RECUPERAR CONTRASEÑA
-================================ */
-
-async function recover(){
-
-hide('recoveryMsg');
-
-
-const email =
-$('email')
-.value
-.trim();
-
-
-if(!email){
-
-show(
-  'recoveryMsg',
-  'Escribe primero tu correo.',
-  true
-);
-
-return;
-
-}
-
-
-show(
-  'recoveryMsg',
-  'Enviando correo de recuperación...'
-);
-
-
-try{
-
-
-const url =
-
-SUPABASE_URL +
-
-'/auth/v1/recover?redirect_to=' +
-
-encodeURIComponent(
-  RESET_URL
-);
-
-
-const r =
-await fetch(
-
-url,
-
-{
-
-method:'POST',
-
-headers:{
-
-'Content-Type':
-'application/json',
-
-'apikey':
-API_KEY
-
-},
-
-body:
-JSON.stringify({
-
-email
-
-})
-
-}
-
-);
-
-
-let data = {};
-
-
-try{
-
-data =
-await r.json();
-
-}
-
-catch(e){}
-
-
-if(!r.ok){
-
-show(
-  'recoveryMsg',
-  'No se pudo enviar: ' +
-  (
-    data.msg ||
-    data.message ||
-    ('Error ' + r.status)
-  ),
-  true
-);
-
-return;
-
-}
-
-
-show(
-  'recoveryMsg',
-  'Correo enviado. Abre únicamente el mensaje más reciente.'
-);
-
-
-}
-
-catch(err){
-
-show(
-  'recoveryMsg',
-  'Error de conexión: ' +
-  err.message,
-  true
-);
-
-}
-
-}
-
-
-
-function logout(){
-
-accessToken = '';
-
-currentEmail = '';
-
-
-localStorage.removeItem(
-  'rt360_access_token'
-);
-
-
-localStorage.removeItem(
-  'rt360_email'
-);
-
-
-showLogin();
-
-}
-
-
-
-/* ================================
-   CÓDIGOS AUTOMÁTICOS
-================================ */
-
-const CODE_PREFIXES = {
-
-'Chaquiras':'CHQ',
-
-'Textiles':'TEX',
-
-'Accesorios':'ACC',
-
-'Naguas':'NAG',
-
-'Camisas':'CAM',
-
-'Otros':'OTR'
-
-};
-
-
-
-async function generateCode(){
-
-/*
-Si estamos editando un producto,
-mantiene su código original.
-*/
-
-if(
-  $('productId').value
-){
-
-return $('codigo').value;
-
-}
-
-
-hide('formMsg');
-
-
-const categoria =
-$('categoria').value ||
-'Otros';
-
-
-const prefix =
-CODE_PREFIXES[categoria]
-||
-'OTR';
-
-
-const base =
-'R360-' +
-prefix +
-'-';
-
-
-$('codigo').value =
-'Generando...';
-
-
-try{
-
-
-/*
-Se consultan TODOS los códigos
-existentes en Supabase.
-*/
-
-const r =
-await fetch(
-
-SUPABASE_URL +
-
-'/rest/v1/productos?select=codigo',
-
-{
-
-headers:
-authHeaders()
-
-}
-
-);
-
-
-const data =
-await r.json();
-
-
-if(!r.ok){
-
-throw new Error(
-
-data.message ||
-
-'No se pudieron consultar los códigos'
-
-);
-
-}
-
-
-let mayor = 0;
-
-
-for(
-  const item
-  of data
-){
-
-const code =
-String(
-  item.codigo || ''
-);
-
-
-if(
-  code.startsWith(base)
-){
-
-const numero =
-parseInt(
-
-code.substring(
-  base.length
-),
-
-10
-
-);
-
-
-if(
-  Number.isFinite(numero) &&
-  numero > mayor
-){
-
-mayor =
-numero;
-
-}
-
-}
-
-}
-
-
-/*
-Siguiente número disponible
-*/
-
-const siguiente =
-
-String(
-  mayor + 1
-)
-.padStart(
-  3,
-  '0'
-);
-
-
-const codigoNuevo =
-
-base +
-siguiente;
-
-
-$('codigo').value =
-codigoNuevo;
-
-
-return codigoNuevo;
-
-
-}
-
-catch(err){
-
-
-/*
-MUY IMPORTANTE:
-
-Si Supabase falla,
-NO se asigna 001.
-Así evitamos duplicados.
-*/
-
-$('codigo').value = '';
-
-
-show(
-
-'formMsg',
-
-'No se pudo generar el código. Pulsa Actualizar e inténtalo nuevamente.',
-
-true
-
-);
-
-
-return '';
-
-
-}
-
-}
-
-
-
-/* ================================
-   LIMPIAR FORMULARIO
-================================ */
-
-function clearForm(){
-
-$('productId').value = '';
-
-$('oldImageUrl').value = '';
-
-$('codigo').value = '';
-
-$('nombre').value = '';
-
-$('categoria').value =
-'Accesorios';
-
-$('descripcion').value = '';
-
-$('precio').value = '';
-
-$('disponibilidad').value =
-'Disponible';
-
-$('foto').value = '';
-
-$('activo').checked =
-true;
-
-$('preview').src = '';
-
-$('preview').style.display =
-'none';
-
-$('formTitle').textContent =
-'Nuevo producto';
-
-
-hide('formMsg');
-
-
-generateCode();
-
-}
-
-
-
-/* ================================
-   CAMBIO DE CATEGORÍA
-================================ */
-
-$('categoria')
-.addEventListener(
-  'change',
-  async ()=>{
-
-/*
-Solo genera código nuevo
-si NO estamos editando.
-*/
-
-if(
-  !$('productId').value
-){
-
-hide('formMsg');
-
-$('codigo').value = '';
-
-await generateCode();
-
-}
-
-}
-);
-
-
-
-/* ================================
-   VISTA PREVIA DE FOTO
-================================ */
-
-$('foto')
-.addEventListener(
-  'change',
-  e=>{
-
-const f =
-e.target.files[0];
-
-
-if(!f){
-
-return;
-
-}
-
-
-$('preview').src =
-URL.createObjectURL(f);
-
-
-$('preview').style.display =
-'block';
-
-}
-);
-
-
-
-/* ================================
-   SUBIR FOTO
-================================ */
-
-async function uploadImage(
-  file,
-  code
-){
-
-const ext =
-
-(
-  file.name
-  .split('.')
-  .pop()
-  ||
-  'jpg'
-)
-.toLowerCase();
-
-
-const safe =
-
-(
-  code ||
-  'producto'
-)
-
-.replace(
-  /[^a-z0-9_-]/gi,
-  '_'
-);
-
-
-const path =
-
-safe +
-
-'_' +
-
-Date.now() +
-
-'.' +
-
-ext;
-
-
-const r =
-await fetch(
-
-SUPABASE_URL +
-
-'/storage/v1/object/productos/' +
-
-encodeURIComponent(path),
-
-{
-
-method:'POST',
-
-headers:
-authHeaders({
-
-'Content-Type':
-file.type ||
-'application/octet-stream',
-
-'x-upsert':
-'false'
-
-}),
-
-body:file
-
-}
-
-);
-
-
-if(!r.ok){
-
-let data = {};
-
-
-try{
-
-data =
-await r.json();
-
-}
-
-catch(e){}
-
-
-throw new Error(
-
-data.message ||
-
-data.error ||
-
-'No se pudo subir la foto'
-
-);
-
-}
-
-
-return (
-
-SUPABASE_URL +
-
-'/storage/v1/object/public/productos/' +
-
-encodeURIComponent(path)
-
-);
-
-}
-
-
-
-/* ================================
-   BORRAR FOTO
-================================ */
-
-async function deleteImage(url){
-
-if(!url){
-
-return;
-
-}
-
-
-const marker =
-
-'/storage/v1/object/public/productos/';
-
-
-const i =
-url.indexOf(marker);
-
-
-if(i === -1){
-
-return;
-
-}
-
-
-const path =
-
-decodeURIComponent(
-
-url.substring(
-
-i +
-marker.length
-
-)
-
-);
-
-
-await fetch(
-
-SUPABASE_URL +
-
-'/storage/v1/object/productos/' +
-
-encodeURIComponent(path),
-
-{
-
-method:'DELETE',
-
-headers:
-authHeaders()
-
-}
-
-);
-
-}
-
-
-
-/* ================================
-   GUARDAR PRODUCTO
-================================ */
-
-async function saveProduct(event){
-
-if(event){
-
-event.preventDefault();
-
-}
-
-
-hide('formMsg');
-
-
-const saveButton =
-$('saveBtn');
-
-
-if(saveButton){
-
-saveButton.disabled =
-true;
-
-saveButton.textContent =
-'Guardando...';
-
-}
-
-
-/*
-Si es producto nuevo,
-verifica que exista
-un código válido.
-*/
-
-if(
-  !$('productId').value &&
-  (
-    !$('codigo').value.trim() ||
-    $('codigo').value === 'Generando...'
-  )
-){
-
-await generateCode();
-
-}
-
-
-/*
-Si no pudo generar código,
-NO guarda.
-*/
-
-if(
-  !$('codigo').value.trim()
-){
-
-show(
-
-'formMsg',
-
-'No se pudo generar un código válido. Pulsa Actualizar e inténtalo nuevamente.',
-
-true
-
-);
-
-
-if(saveButton){
-
-saveButton.disabled =
-false;
-
-saveButton.textContent =
-'Guardar producto';
-
-}
-
-
-return;
-
-}
-
-
-/*
-Validar nombre
-*/
-
-if(
-  !$('nombre')
-  .value
-  .trim()
-){
-
-show(
-
-'formMsg',
-
-'Completa el nombre del producto.',
-
-true
-
-);
-
-
-if(saveButton){
-
-saveButton.disabled =
-false;
-
-saveButton.textContent =
-'Guardar producto';
-
-}
-
-
-return;
-
-}
-
-
-try{
-
-
-const id =
-$('productId').value;
-
-
-const oldImage =
-$('oldImageUrl').value;
-
-
-let imageUrl =
-oldImage ||
-null;
-
-
-const file =
-$('foto').files[0];
-
-
-if(file){
-
-imageUrl =
-await uploadImage(
-
-file,
-
-$('codigo')
-.value
-.trim()
-
-);
-
-}
-
-
-const payload = {
-
-codigo:
-$('codigo')
-.value
-.trim(),
-
-nombre:
-$('nombre')
-.value
-.trim(),
-
-categoria:
-$('categoria')
-.value,
-
-descripcion:
-$('descripcion')
-.value
-.trim(),
-
-precio:
-$('precio').value === ''
-
-? null
-
-: Number(
-    $('precio').value
-  ),
-
-disponibilidad:
-$('disponibilidad')
-.value,
-
-imagen_url:
-imageUrl,
-
-activo:
-$('activo')
-.checked
-
-};
-
-
-/*
-URL de crear o editar
-*/
-
-const url = id
-
-?
-
-SUPABASE_URL +
-
-'/rest/v1/productos?id=eq.' +
-
-encodeURIComponent(id)
-
-:
-
-SUPABASE_URL +
-
-'/rest/v1/productos';
-
-
-const r =
-await fetch(
-
-url,
-
-{
-
-method:
-id
-? 'PATCH'
-: 'POST',
-
-headers:
-authHeaders({
-
-'Content-Type':
-'application/json',
-
-'Prefer':
-'return=representation'
-
-}),
-
-body:
-JSON.stringify(payload)
-
-}
-
-);
-
-
-let data = [];
-
-
-try{
-
-data =
-await r.json();
-
-}
-
-catch(e){}
-
-
-/*
-ERROR DE CÓDIGO DUPLICADO
-*/
-
-if(!r.ok){
-
-const mensaje =
-
-(data &&
-data.message)
-||
-'No se pudo guardar';
-
-
-/*
-Supabase devuelve 23505
-cuando viola UNIQUE.
-*/
-
-if(
-
-data &&
-(
-  data.code === '23505' ||
-  String(mensaje)
-  .toLowerCase()
-  .includes('duplicate')
-)
-
-){
-
-show(
-
-'formMsg',
-
-'Este código ya existe. Se generará uno nuevo automáticamente.',
-
-true
-
-);
-
-
-/*
-Generar un código nuevo
-sin guardar duplicado.
-*/
-
-$('codigo').value = '';
-
-await generateCode();
-
-
-throw new Error(
-
-'Código duplicado detectado. Revisa el nuevo código y pulsa Guardar nuevamente.'
-
-);
-
-}
-
-
-throw new Error(
-  mensaje
-);
-
-}
-
-
-/*
-Eliminar foto vieja
-si fue reemplazada.
-*/
-
-if(
-  file &&
-  oldImage &&
-  oldImage !== imageUrl
-){
-
-await deleteImage(
-  oldImage
-);
-
-}
-
-
-show(
-
-'formMsg',
-
-id
-
-? 'Producto actualizado correctamente.'
-
-: 'Producto agregado correctamente.'
-
-);
-
-
-/*
-Después de guardar,
-limpia y genera
-el siguiente código.
-*/
-
-clearForm();
-
-loadProducts();
-
-
-}
-
-catch(err){
-
-
-show(
-
-'formMsg',
-
-'Error: ' +
-err.message,
-
-true
-
-);
-
-
-}
-
-finally{
-
-
-if(saveButton){
-
-saveButton.disabled =
-false;
-
-saveButton.textContent =
-'Guardar producto';
-
-}
-
-
-}
-
-}
-
-
-
-/* ================================
-   CARGAR PRODUCTOS
-================================ */
+const SUPABASE_URL='https://gjmiiqdadsslgjszgswe.supabase.co';
+const API_KEY='sb_publishable_LQFknnAXuHgVpv9rcHVw6Q_sYc6SdPR';
+
+let allProducts=[];
+let activeCategory='Todos';
+
+const esc=(v)=>String(v??'')
+.replaceAll('&','&amp;')
+.replaceAll('<','&lt;')
+.replaceAll('>','&gt;')
+.replaceAll('"','&quot;')
+.replaceAll("'","&#039;");
 
 async function loadProducts(){
+  const status=document.getElementById('status');
+  const container=document.getElementById('products');
 
-$('productList')
-.innerHTML =
+  try{
+    const r=await fetch(
+      SUPABASE_URL+'/rest/v1/productos?select=*&activo=eq.true&order=id.desc',
+      {headers:{apikey:API_KEY}}
+    );
 
-'<p class="muted">Cargando...</p>';
+    const data=await r.json();
 
+    if(!r.ok) throw new Error(data.message||'No se pudo cargar el catálogo');
 
-hide('listMsg');
+    allProducts=Array.isArray(data)?data:[];
 
+    status.textContent=allProducts.length
+      ? 'Catálogo actualizado.'
+      : 'Todavía no hay productos publicados.';
 
-try{
+    buildFilters();
+    renderProducts();
+    fillOrderProducts();
 
-
-const r =
-await fetch(
-
-SUPABASE_URL +
-
-'/rest/v1/productos?select=*&order=id.desc',
-
-{
-
-headers:
-authHeaders()
-
+  }catch(err){
+    status.textContent='No se pudo cargar el catálogo: '+err.message;
+    container.innerHTML='<div class="empty">Intenta actualizar nuevamente.</div>';
+  }
 }
 
-);
+function buildFilters(){
+  const filters=document.getElementById('filters');
+  const categories=['Todos',...new Set(allProducts.map(p=>p.categoria).filter(Boolean))];
 
+  filters.innerHTML='';
 
-const data =
-await r.json();
+  categories.forEach(cat=>{
+    const btn=document.createElement('button');
+    btn.textContent=cat;
+    if(cat===activeCategory) btn.classList.add('active');
 
+    btn.onclick=()=>{
+      activeCategory=cat;
+      buildFilters();
+      renderProducts();
+    };
 
-if(!r.ok){
-
-throw new Error(
-
-data.message ||
-
-'No se pudieron cargar los productos'
-
-);
-
+    filters.appendChild(btn);
+  });
 }
 
+function renderProducts(){
+  const container=document.getElementById('products');
 
-$('productList')
-.innerHTML = '';
+  const products=activeCategory==='Todos'
+    ? allProducts
+    : allProducts.filter(p=>p.categoria===activeCategory);
 
+  if(!products.length){
+    container.innerHTML='<div class="empty">No hay productos en esta categoría.</div>';
+    return;
+  }
 
-if(!data.length){
+  container.innerHTML=products.map(p=>{
+    const media=p.imagen_url
+      ? `<div class="product-media"><img src="${esc(p.imagen_url)}" alt="${esc(p.nombre||'Producto')}"></div>`
+      : `<div class="product-media" style="color:#8a7b6d">Sin fotografía</div>`;
 
-$('productList')
-.innerHTML =
+    const price=p.precio==null
+      ? 'Consultar'
+      : 'B/. '+Number(p.precio).toFixed(2);
 
-'<p class="muted">Todavía no hay productos.</p>';
-
-return;
-
+    return `
+      <article class="product">
+        ${media}
+        <div class="product-body">
+          <div class="code">${esc(p.codigo||'')}</div>
+          <h3>${esc(p.nombre||'Producto')}</h3>
+          <div class="badges">
+            ${p.categoria?`<span class="badge">${esc(p.categoria)}</span>`:''}
+            ${p.disponibilidad?`<span class="badge">${esc(p.disponibilidad)}</span>`:''}
+          </div>
+          <p class="desc">${esc(p.descripcion||'')}</p>
+          <div class="price">${price}</div>
+        </div>
+      </article>
+    `;
+  }).join('');
 }
 
-
-/*
-Mostrar productos
-*/
-
-data.forEach(p=>{
-
-
-const row =
-document.createElement(
-  'article'
-);
-
-
-row.className =
-'product';
-
-
-const img =
-
-p.imagen_url
-
-?
-
-'<img src="' +
-
-esc(p.imagen_url) +
-
-'" alt="' +
-
-esc(
-  p.nombre ||
-  'Producto'
-) +
-
-'">'
-
-:
-
-'<div style="' +
-
-'width:110px;' +
-
-'height:95px;' +
-
-'background:#eee;' +
-
-'border-radius:10px;' +
-
-'display:grid;' +
-
-'place-items:center;' +
-
-'font-size:12px' +
-
-'">Sin foto</div>';
-
-
-row.innerHTML =
-
-img +
-
-'<div>' +
-
-'<div class="muted">' +
-
-esc(p.codigo || '') +
-
-'</div>' +
-
-'<h3 style="margin:4px 0">' +
-
-esc(p.nombre || '') +
-
-'</h3>' +
-
-'<span class="badge">' +
-
-esc(p.categoria || '') +
-
-'</span>' +
-
-'<span class="badge">' +
-
-esc(p.disponibilidad || '') +
-
-'</span>' +
-
-'<p class="muted">' +
-
-esc(p.descripcion || '') +
-
-'</p>' +
-
-'<div class="price">' +
-
-(
-  p.precio == null
-
-  ? 'Sin precio'
-
-  : 'B/. ' +
-    Number(p.precio)
-    .toFixed(2)
-) +
-
-'</div>' +
-
-'<div class="muted">' +
-
-(
-  p.activo === false
-
-  ? 'Oculto'
-
-  : 'Visible en catálogo'
-) +
-
-'</div>' +
-
-'</div>' +
-
-'<div class="row-actions">' +
-
-'<button class="secondary editBtn">' +
-
-'Editar' +
-
-'</button>' +
-
-'<button class="danger delBtn">' +
-
-'Borrar' +
-
-'</button>' +
-
-'</div>';
-
-
-row
-.querySelector(
-  '.editBtn'
-)
-.onclick = ()=>{
-
-editProduct(p);
-
-};
-
-
-row
-.querySelector(
-  '.delBtn'
-)
-.onclick = ()=>{
-
-deleteProduct(p);
-
-};
-
-
-$('productList')
-.appendChild(row);
-
-
-});
-
-
+function fillOrderProducts(){
+  const select=document.getElementById('orderProduct');
+  select.innerHTML='<option value="">Selecciona un producto</option>';
+
+  allProducts.forEach(p=>{
+    const opt=document.createElement('option');
+    opt.value=p.nombre||'';
+    opt.textContent=(p.nombre||'Producto')+
+      (p.precio!=null?' · B/. '+Number(p.precio).toFixed(2):'');
+    select.appendChild(opt);
+  });
 }
 
-catch(err){
+function prepareOrder(){
+  const name=document.getElementById('orderName').value.trim();
+  const product=document.getElementById('orderProduct').value;
+  const qty=document.getElementById('orderQty').value;
+  const detail=document.getElementById('orderDetail').value.trim();
+  const msg=document.getElementById('orderMsg');
 
+  if(!name||!product){
+    msg.textContent='Completa el nombre y selecciona un producto.';
+    msg.style.display='block';
+    return;
+  }
 
-$('productList')
-.innerHTML = '';
+  msg.innerHTML=
+    '<strong>Pedido de prueba preparado:</strong><br>'+
+    'Cliente: '+esc(name)+'<br>'+
+    'Producto: '+esc(product)+'<br>'+
+    'Cantidad: '+esc(qty)+
+    (detail?'<br>Detalle: '+esc(detail):'')+
+    '<br><br>En el siguiente paso podemos enviarlo directamente por WhatsApp.';
 
-
-show(
-
-'listMsg',
-
-'Error: ' +
-err.message,
-
-true
-
-);
-
-
+  msg.style.display='block';
 }
 
-}
-
-
-
-/* ================================
-   EDITAR PRODUCTO
-================================ */
-
-function editProduct(p){
-
-$('productId').value =
-p.id || '';
-
-$('oldImageUrl').value =
-p.imagen_url || '';
-
-$('codigo').value =
-p.codigo || '';
-
-$('nombre').value =
-p.nombre || '';
-
-$('categoria').value =
-p.categoria || 'Otros';
-
-$('descripcion').value =
-p.descripcion || '';
-
-$('precio').value =
-p.precio ?? '';
-
-$('disponibilidad').value =
-p.disponibilidad ||
-'Disponible';
-
-$('activo').checked =
-p.activo !== false;
-
-
-$('formTitle').textContent =
-'Editar producto';
-
-
-hide('formMsg');
-
-
-if(p.imagen_url){
-
-$('preview').src =
-p.imagen_url;
-
-$('preview').style.display =
-'block';
-
-}
-
-else{
-
-$('preview').style.display =
-'none';
-
-}
-
-
-window.scrollTo({
-
-top:0,
-
-behavior:'smooth'
-
-});
-
-}
-
-
-
-/* ================================
-   BORRAR PRODUCTO
-================================ */
-
-async function deleteProduct(p){
-
-if(
-  !confirm(
-    '¿Deseas borrar este producto?'
-  )
-){
-
-return;
-
-}
-
-
-try{
-
-
-const r =
-await fetch(
-
-SUPABASE_URL +
-
-'/rest/v1/productos?id=eq.' +
-
-encodeURIComponent(p.id),
-
-{
-
-method:'DELETE',
-
-headers:
-authHeaders()
-
-}
-
-);
-
-
-if(!r.ok){
-
-let data = {};
-
-
-try{
-
-data =
-await r.json();
-
-}
-
-catch(e){}
-
-
-throw new Error(
-
-data.message ||
-
-'No se pudo borrar'
-
-);
-
-}
-
-
-if(p.imagen_url){
-
-await deleteImage(
-  p.imagen_url
-);
-
-}
-
-
-show(
-
-'listMsg',
-
-'Producto eliminado.'
-
-);
-
-
-await loadProducts();
-
-
-/*
-Actualizar próximo código
-después de borrar
-*/
-
-if(
-  !$('productId').value
-){
-
-await generateCode();
-
-}
-
-
-}
-
-catch(err){
-
-
-show(
-
-'listMsg',
-
-'Error: ' +
-err.message,
-
-true
-
-);
-
-
-}
-
-}
-
-
-
-/* ================================
-   BOTONES
-================================ */
-
-$('loginBtn')
-.onclick =
-login;
-
-
-$('forgotBtn')
-.onclick =
-recover;
-
-
-$('logoutBtn')
-.onclick =
-logout;
-
-
-$('clearBtn')
-.onclick =
-clearForm;
-
-
-$('newBtn')
-.onclick =
-clearForm;
-
-
-$('refreshBtn')
-.onclick =
-async ()=>{
-
-await loadProducts();
-
-
-if(
-  !$('productId').value
-){
-
-await generateCode();
-
-}
-
-};
-
-
-
-/* ================================
-   INICIO
-================================ */
-
-if(
-  accessToken &&
-  currentEmail
-){
-
-showAdmin();
-
-}
-
-else{
-
-showLogin();
-
-}
-
+loadProducts();
 </script>
 
 </body>
