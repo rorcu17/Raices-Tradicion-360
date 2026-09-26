@@ -3,620 +3,2719 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Administración | Raíces y Tradición 360</title>
+
 <style>
-:root{--green:#0e493f;--cream:#f7f1e7;--line:#ded8cd;--muted:#6e746f;--red:#8e2f2f}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:#202925}
-header{background:var(--green);color:#fff;padding:18px 5vw;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-header a{color:#fff}
-.wrap{max-width:1200px;margin:28px auto;padding:0 18px}
-.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 12px 30px #0000000d}
-#loginView{max-width:470px;margin:55px auto}
-label{display:block;font-weight:700;margin:12px 0}
-input,select,textarea{width:100%;padding:12px;border:1px solid #d8d1c7;border-radius:10px;margin-top:6px;font:inherit}
-button{cursor:pointer}
-.primary{background:var(--green);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700}
-button:disabled{opacity:.6;cursor:not-allowed}
-.secondary{background:#fff;color:var(--green);border:1px solid var(--green);border-radius:10px;padding:11px 15px;font-weight:700}
-.danger{background:var(--red);color:#fff;border:0;border-radius:9px;padding:9px 12px}
-.hidden{display:none!important}
-.notice{padding:11px 13px;border-radius:10px;margin:12px 0;background:#edf6f2;color:var(--green);display:none}
-.error{background:#fdeaea;color:#8b2020}
-.grid{display:grid;grid-template-columns:390px 1fr;gap:22px;align-items:start}
-.topbar{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:20px;flex-wrap:wrap}
-.products{display:grid;gap:14px}
-.product{display:grid;grid-template-columns:110px 1fr auto;gap:15px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:12px}
-.product img{width:110px;height:95px;object-fit:cover;border-radius:10px;background:#eee}
-.muted{color:var(--muted);font-size:13px}
-.price{font-weight:800;color:var(--green);font-size:18px}
-.row-actions{display:flex;gap:8px;flex-direction:column}
-.preview{margin-top:10px;max-width:100%;max-height:210px;border-radius:12px;display:none}
-.badge{display:inline-block;padding:5px 8px;border-radius:999px;background:#f0eadf;font-size:12px;margin-right:5px}
-.login-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-@media(max-width:900px){.grid{grid-template-columns:1fr}}
-@media(max-width:620px){.product{grid-template-columns:85px 1fr}.product img{width:85px;height:78px}.row-actions{grid-column:1/-1;flex-direction:row}}
+:root{
+  --green:#0e493f;
+  --cream:#f7f1e7;
+  --line:#ded8cd;
+  --muted:#6e746f;
+  --red:#8e2f2f;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--cream);
+  color:#202925;
+}
+
+header{
+  background:var(--green);
+  color:#fff;
+  padding:18px 5vw;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+header a{
+  color:#fff;
+}
+
+.wrap{
+  max-width:1200px;
+  margin:28px auto;
+  padding:0 18px;
+}
+
+.card{
+  background:#fff;
+
+  border:1px solid var(--line);
+  border-radius:18px;
+
+  padding:22px;
+
+  box-shadow:0 12px 30px #0000000d;
+}
+
+#loginView{
+  max-width:470px;
+  margin:55px auto;
+}
+
+label{
+  display:block;
+  font-weight:700;
+  margin:12px 0;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+
+  padding:12px;
+
+  border:1px solid #d8d1c7;
+  border-radius:10px;
+
+  margin-top:6px;
+
+  font:inherit;
+}
+
+textarea{
+  resize:vertical;
+}
+
+button{
+  cursor:pointer;
+}
+
+button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+.primary{
+  background:var(--green);
+  color:#fff;
+
+  border:0;
+  border-radius:10px;
+
+  padding:12px 18px;
+
+  font-weight:700;
+}
+
+.secondary{
+  background:#fff;
+  color:var(--green);
+
+  border:1px solid var(--green);
+  border-radius:10px;
+
+  padding:11px 15px;
+
+  font-weight:700;
+}
+
+.danger{
+  background:var(--red);
+  color:#fff;
+
+  border:0;
+  border-radius:9px;
+
+  padding:9px 12px;
+}
+
+.hidden{
+  display:none !important;
+}
+
+.notice{
+  padding:11px 13px;
+  border-radius:10px;
+
+  margin:12px 0;
+
+  background:#edf6f2;
+  color:var(--green);
+
+  display:none;
+}
+
+.error{
+  background:#fdeaea;
+  color:#8b2020;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:390px 1fr;
+
+  gap:22px;
+
+  align-items:start;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+
+  align-items:center;
+
+  margin-bottom:20px;
+
+  flex-wrap:wrap;
+}
+
+.products{
+  display:grid;
+  gap:14px;
+}
+
+.product{
+  display:grid;
+
+  grid-template-columns:110px 1fr auto;
+
+  gap:15px;
+
+  align-items:center;
+
+  border:1px solid var(--line);
+  border-radius:14px;
+
+  padding:12px;
+}
+
+.product img{
+  width:110px;
+  height:95px;
+
+  object-fit:contain;
+
+  border-radius:10px;
+
+  background:#fff;
+}
+
+.muted{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.price{
+  font-weight:800;
+  color:var(--green);
+
+  font-size:18px;
+}
+
+.row-actions{
+  display:flex;
+  gap:8px;
+  flex-direction:column;
+}
+
+.preview{
+  margin-top:10px;
+
+  max-width:100%;
+  max-height:230px;
+
+  object-fit:contain;
+
+  border-radius:12px;
+
+  display:none;
+}
+
+.badge{
+  display:inline-block;
+
+  padding:5px 8px;
+
+  border-radius:999px;
+
+  background:#f0eadf;
+
+  font-size:12px;
+
+  margin-right:5px;
+}
+
+.login-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+
+  margin-top:14px;
+}
+
+.code-box{
+  background:#f4f8f6;
+  border:1px solid #bdd3ca;
+  font-weight:800;
+  color:var(--green);
+}
+
+@media(max-width:900px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:620px){
+
+  .product{
+    grid-template-columns:85px 1fr;
+  }
+
+  .product img{
+    width:85px;
+    height:78px;
+  }
+
+  .row-actions{
+    grid-column:1/-1;
+    flex-direction:row;
+  }
+
+}
 </style>
 </head>
+
 <body>
 
 <header>
-  <div>
-    <strong style="font-size:23px">Raíces y Tradición 360</strong><br>
-    <small>Panel de administración</small>
-  </div>
-  <a href="index.html">Ver página</a>
+
+<div>
+
+<strong style="font-size:23px">
+Raíces y Tradición 360
+</strong>
+
+<br>
+
+<small>
+Panel de administración
+</small>
+
+</div>
+
+<a href="index.html">
+Ver página
+</a>
+
 </header>
+
 
 <div class="wrap">
 
-<section id="loginView" class="card">
-  <h2>Acceso de administrador</h2>
-  <p class="muted">Ingresa con tu usuario de Supabase.</p>
 
-  <div id="loginMsg" class="notice"></div>
-  <div id="recoveryMsg" class="notice"></div>
+<!-- LOGIN -->
 
-  <label>Correo
-    <input id="email" type="email" value="raul.orocu@gmail.com">
-  </label>
+<section
+  id="loginView"
+  class="card"
+>
 
-  <label>Contraseña
-    <input id="password" type="password">
-  </label>
+<h2>
+Acceso de administrador
+</h2>
 
-  <div class="login-actions">
-    <button id="loginBtn" class="primary" type="button">Entrar</button>
-    <button id="forgotBtn" class="secondary" type="button">¿Olvidaste tu contraseña?</button>
-  </div>
+<p class="muted">
+Ingresa con tu usuario de Supabase.
+</p>
+
+
+<div
+  id="loginMsg"
+  class="notice"
+></div>
+
+
+<div
+  id="recoveryMsg"
+  class="notice"
+></div>
+
+
+<label>
+
+Correo
+
+<input
+  id="email"
+  type="email"
+  value="raul.orocu@gmail.com"
+>
+
+</label>
+
+
+<label>
+
+Contraseña
+
+<input
+  id="password"
+  type="password"
+>
+
+</label>
+
+
+<div class="login-actions">
+
+<button
+  id="loginBtn"
+  class="primary"
+  type="button"
+>
+
+Entrar
+
+</button>
+
+
+<button
+  id="forgotBtn"
+  class="secondary"
+  type="button"
+>
+
+¿Olvidaste tu contraseña?
+
+</button>
+
+</div>
+
 </section>
 
-<section id="adminView" class="hidden">
-  <div class="topbar">
-    <div>
-      <h2 style="margin-bottom:5px">Administrar catálogo</h2>
-      <div id="userEmail" class="muted"></div>
-    </div>
-    <div>
-      <button id="newBtn" class="primary">+ Nuevo producto</button>
-      <button id="logoutBtn" class="secondary">Cerrar sesión</button>
-    </div>
-  </div>
 
-  <div class="grid">
-    <div class="card">
-      <form id="productForm" onsubmit="saveProduct(event); return false;">
-      <h3 id="formTitle">Nuevo producto</h3>
-      <div id="formMsg" class="notice"></div>
+<!-- ADMIN -->
 
-      <input id="productId" type="hidden">
-      <input id="oldImageUrl" type="hidden">
+<section
+  id="adminView"
+  class="hidden"
+>
 
-      <label>Código<input id="codigo" placeholder="Se genera automáticamente" readonly></label>
-      <div class="muted" style="margin-top:-6px;margin-bottom:8px">El código se asigna automáticamente según la categoría.</div>
-      <label>Nombre<input id="nombre" placeholder="Nombre del producto"></label>
+<div class="topbar">
 
-      <label>Categoría
-        <select id="categoria">
-          <option>Accesorios</option>
-          <option>Textiles</option>
-          <option>Chaquiras</option>
-          <option>Naguas</option>
-          <option>Camisas</option>
-          <option>Otros</option>
-        </select>
-      </label>
+<div>
 
-      <label>Descripción<textarea id="descripcion" rows="4"></textarea></label>
-      <label>Precio (B/.)<input id="precio" type="number" min="0" step="0.01"></label>
+<h2 style="margin-bottom:5px">
+Administrar catálogo
+</h2>
 
-      <label>Disponibilidad
-        <select id="disponibilidad">
-          <option>Disponible</option>
-          <option>Disponible / personalizable</option>
-          <option>Producción limitada</option>
-          <option>Bajo pedido</option>
-          <option>Por talla y encargo</option>
-          <option>Agotado</option>
-        </select>
-      </label>
+<div
+  id="userEmail"
+  class="muted"
+></div>
 
-      <label>Foto<input id="foto" type="file" accept="image/*"></label>
-      <img id="preview" class="preview">
+</div>
 
-      <label style="display:flex;align-items:center;gap:8px">
-        <input id="activo" type="checkbox" checked style="width:auto;margin:0">
-        Mostrar en catálogo
-      </label>
 
-      <div class="login-actions">
-        <button id="saveBtn" class="primary" type="submit">Guardar producto</button>
-        <button id="clearBtn" class="secondary" type="button">Limpiar</button>
-      </div>
-      <div id="formMsgBottom" class="notice"></div>
-      </form>
-    </div>
+<div>
 
-    <div class="card">
-      <div class="topbar">
-        <h3 style="margin:0">Productos</h3>
-        <button id="refreshBtn" class="secondary">Actualizar</button>
-      </div>
-      <div id="listMsg" class="notice"></div>
-      <div id="productList" class="products"></div>
-    </div>
-  </div>
+<button
+  id="newBtn"
+  class="primary"
+  type="button"
+>
+
++ Nuevo producto
+
+</button>
+
+
+<button
+  id="logoutBtn"
+  class="secondary"
+  type="button"
+>
+
+Cerrar sesión
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="grid">
+
+
+<!-- FORMULARIO -->
+
+<div class="card">
+
+<form
+  id="productForm"
+  onsubmit="saveProduct(event); return false;"
+>
+
+
+<h3 id="formTitle">
+Nuevo producto
+</h3>
+
+
+<div
+  id="formMsg"
+  class="notice"
+></div>
+
+
+<input
+  id="productId"
+  type="hidden"
+>
+
+
+<input
+  id="oldImageUrl"
+  type="hidden"
+>
+
+
+<label>
+
+Código
+
+<input
+  id="codigo"
+  class="code-box"
+  placeholder="Se genera automáticamente"
+  readonly
+>
+
+</label>
+
+
+<div
+  class="muted"
+  style="margin-top:-6px;margin-bottom:10px"
+>
+
+El código se asigna automáticamente según la categoría.
+
+</div>
+
+
+<label>
+
+Nombre
+
+<input
+  id="nombre"
+  placeholder="Nombre del producto"
+>
+
+</label>
+
+
+<label>
+
+Categoría
+
+<select id="categoria">
+
+<option>
+Accesorios
+</option>
+
+<option>
+Chaquiras
+</option>
+
+<option>
+Textiles
+</option>
+
+<option>
+Naguas
+</option>
+
+<option>
+Camisas
+</option>
+
+<option>
+Otros
+</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+Descripción
+
+<textarea
+  id="descripcion"
+  rows="4"
+></textarea>
+
+</label>
+
+
+<label>
+
+Precio (B/.)
+
+<input
+  id="precio"
+  type="number"
+  min="0"
+  step="0.01"
+>
+
+</label>
+
+
+<label>
+
+Disponibilidad
+
+<select id="disponibilidad">
+
+<option>
+Disponible
+</option>
+
+<option>
+Disponible / personalizable
+</option>
+
+<option>
+Producción limitada
+</option>
+
+<option>
+Bajo pedido
+</option>
+
+<option>
+Por talla y encargo
+</option>
+
+<option>
+Agotado
+</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+Foto
+
+<input
+  id="foto"
+  type="file"
+  accept="image/*"
+>
+
+</label>
+
+
+<img
+  id="preview"
+  class="preview"
+>
+
+
+<label
+  style="
+    display:flex;
+    align-items:center;
+    gap:8px
+  "
+>
+
+<input
+  id="activo"
+  type="checkbox"
+  checked
+  style="
+    width:auto;
+    margin:0
+  "
+>
+
+Mostrar en catálogo
+
+</label>
+
+
+<div class="login-actions">
+
+<button
+  id="saveBtn"
+  class="primary"
+  type="submit"
+>
+
+Guardar producto
+
+</button>
+
+
+<button
+  id="clearBtn"
+  class="secondary"
+  type="button"
+>
+
+Limpiar
+
+</button>
+
+</div>
+
+
+<div
+  id="formMsgBottom"
+  class="notice"
+></div>
+
+
+</form>
+
+</div>
+
+
+<!-- LISTA -->
+
+<div class="card">
+
+<div class="topbar">
+
+<h3 style="margin:0">
+Productos
+</h3>
+
+
+<button
+  id="refreshBtn"
+  class="secondary"
+  type="button"
+>
+
+Actualizar
+
+</button>
+
+</div>
+
+
+<div
+  id="listMsg"
+  class="notice"
+></div>
+
+
+<div
+  id="productList"
+  class="products"
+></div>
+
+
+</div>
+
+
+</div>
+
 </section>
 
 </div>
 
+
 <script>
-const SUPABASE_URL = 'https://gjmiiqdadsslgjszgswe.supabase.co';
-const API_KEY = 'sb_publishable_LQFknnAXuHgVpv9rcHVw6Q_sYc6SdPR';
-const REDIRECT_URL = 'https://rorcu17.github.io/Raices-Tradicion-360/reset-password.html';
 
-let accessToken = localStorage.getItem('rt360_access_token') || '';
-let currentEmail = localStorage.getItem('rt360_email') || '';
+/* ================================
+   CONFIGURACIÓN SUPABASE
+================================ */
 
-const $ = id => document.getElementById(id);
+const SUPABASE_URL =
+'https://gjmiiqdadsslgjszgswe.supabase.co';
 
-function show(id, text, error=false){
-  const el=$(id);
-  if(el){
-    el.textContent=text;
-    el.className='notice'+(error?' error':'');
-    el.style.display='block';
-  }
-  if(id==='formMsg'){
-    const bottom=$('formMsgBottom');
-    if(bottom){
-      bottom.textContent=text;
-      bottom.className='notice'+(error?' error':'');
-      bottom.style.display='block';
-    }
-  }
+const API_KEY =
+'sb_publishable_LQFknnAXuHgVpv9rcHVw6Q_sYc6SdPR';
+
+const RESET_URL =
+'https://rorcu17.github.io/Raices-Tradicion-360/reset-password.html';
+
+
+let accessToken =
+localStorage.getItem(
+  'rt360_access_token'
+) || '';
+
+
+let currentEmail =
+localStorage.getItem(
+  'rt360_email'
+) || '';
+
+
+
+/* ================================
+   FUNCIONES BÁSICAS
+================================ */
+
+const $ = id =>
+document.getElementById(id);
+
+
+
+function show(
+  id,
+  text,
+  error=false
+){
+
+const el = $(id);
+
+if(el){
+
+el.textContent = text;
+
+el.className =
+'notice' +
+(error ? ' error' : '');
+
+el.style.display =
+'block';
+
 }
+
+
+/* mensaje también debajo
+   del botón Guardar */
+
+if(id === 'formMsg'){
+
+const bottom =
+$('formMsgBottom');
+
+if(bottom){
+
+bottom.textContent =
+text;
+
+bottom.className =
+'notice' +
+(error ? ' error' : '');
+
+bottom.style.display =
+'block';
+
+}
+
+}
+
+}
+
+
 
 function hide(id){
-  const el=$(id);
-  if(el) el.style.display='none';
-  if(id==='formMsg'){
-    const bottom=$('formMsgBottom');
-    if(bottom) bottom.style.display='none';
-  }
+
+const el = $(id);
+
+if(el){
+
+el.style.display =
+'none';
+
 }
+
+
+if(id === 'formMsg'){
+
+const bottom =
+$('formMsgBottom');
+
+if(bottom){
+
+bottom.style.display =
+'none';
+
+}
+
+}
+
+}
+
+
 
 function esc(v){
-  return String(v ?? '')
-    .replaceAll('&','&amp;')
-    .replaceAll('<','&lt;')
-    .replaceAll('>','&gt;')
-    .replaceAll('"','&quot;')
-    .replaceAll("'","&#039;");
+
+return String(v ?? '')
+
+.replaceAll(
+  '&',
+  '&amp;'
+)
+
+.replaceAll(
+  '<',
+  '&lt;'
+)
+
+.replaceAll(
+  '>',
+  '&gt;'
+)
+
+.replaceAll(
+  '"',
+  '&quot;'
+)
+
+.replaceAll(
+  "'",
+  '&#039;'
+);
+
 }
+
+
 
 function authHeaders(extra={}){
-  return {
-    'apikey': API_KEY,
-    'Authorization': 'Bearer ' + accessToken,
-    ...extra
-  };
-}
 
-function showAdmin(){
-  $('loginView').classList.add('hidden');
-  $('adminView').classList.remove('hidden');
-  $('userEmail').textContent='Sesión: '+currentEmail;
-  loadProducts();
-  if(!$('productId').value) generateCode();
-}
+return {
 
-function showLogin(){
-  $('adminView').classList.add('hidden');
-  $('loginView').classList.remove('hidden');
-}
+'apikey':
+API_KEY,
 
-async function login(){
-  hide('loginMsg');
-  const email=$('email').value.trim();
-  const password=$('password').value;
+'Authorization':
+'Bearer ' + accessToken,
 
-  if(!email || !password){
-    show('loginMsg','Escribe correo y contraseña.',true);
-    return;
-  }
+...extra
 
-  show('loginMsg','Verificando acceso...');
-
-  try{
-    const r=await fetch(SUPABASE_URL+'/auth/v1/token?grant_type=password',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','apikey':API_KEY},
-      body:JSON.stringify({email,password})
-    });
-    const data=await r.json();
-
-    if(!r.ok){
-      show('loginMsg','No se pudo iniciar sesión: '+(data.msg||data.message||'credenciales incorrectas'),true);
-      return;
-    }
-
-    accessToken=data.access_token;
-    currentEmail=(data.user&&data.user.email)||email;
-    localStorage.setItem('rt360_access_token',accessToken);
-    localStorage.setItem('rt360_email',currentEmail);
-    showAdmin();
-
-  }catch(err){
-    show('loginMsg','Error de conexión: '+err.message,true);
-  }
-}
-
-async function recover(){
-  hide('recoveryMsg');
-  const email=$('email').value.trim();
-
-  if(!email){
-    show('recoveryMsg','Escribe primero tu correo.',true);
-    return;
-  }
-
-  show('recoveryMsg','Enviando correo de recuperación...');
-
-  try{
-    const url=SUPABASE_URL+'/auth/v1/recover?redirect_to='+encodeURIComponent(REDIRECT_URL);
-    const r=await fetch(url,{
-      method:'POST',
-      headers:{'Content-Type':'application/json','apikey':API_KEY},
-      body:JSON.stringify({email})
-    });
-
-    let data={};
-    try{ data=await r.json(); }catch(_e){}
-
-    if(!r.ok){
-      show('recoveryMsg','No se pudo enviar: '+(data.msg||data.message||('HTTP '+r.status)),true);
-      return;
-    }
-
-    show('recoveryMsg','Correo enviado. Abre únicamente el mensaje más reciente.');
-  }catch(err){
-    show('recoveryMsg','Error de conexión: '+err.message,true);
-  }
-}
-
-function logout(){
-  accessToken='';
-  currentEmail='';
-  localStorage.removeItem('rt360_access_token');
-  localStorage.removeItem('rt360_email');
-  showLogin();
-}
-
-
-const CODE_PREFIXES = {
-  'Chaquiras':'CHQ',
-  'Textiles':'TEX',
-  'Accesorios':'ACC',
-  'Naguas':'NAG',
-  'Camisas':'CAM',
-  'Otros':'OTR'
 };
 
-async function generateCode(){
-  // Do not change the code while editing an existing product.
-  if($('productId').value) return $('codigo').value;
-
-  const categoria = $('categoria').value || 'Otros';
-  const prefix = CODE_PREFIXES[categoria] || 'OTR';
-  const base = 'R360-' + prefix + '-';
-
-  $('codigo').value = 'Generando...';
-
-  try{
-    const r = await fetch(
-      SUPABASE_URL + '/rest/v1/productos?select=codigo&codigo=like.' +
-      encodeURIComponent(base + '*'),
-      {headers:authHeaders()}
-    );
-
-    const data = await r.json();
-
-    if(!r.ok){
-      throw new Error(data.message || 'No se pudo consultar los códigos');
-    }
-
-    let maxNum = 0;
-
-    for(const item of data){
-      const code = String(item.codigo || '');
-      if(code.startsWith(base)){
-        const n = parseInt(code.substring(base.length), 10);
-        if(Number.isFinite(n) && n > maxNum) maxNum = n;
-      }
-    }
-
-    const next = String(maxNum + 1).padStart(3, '0');
-    $('codigo').value = base + next;
-    return $('codigo').value;
-
-  }catch(err){
-    $('codigo').value = base + '001';
-    show('formMsg', 'No se pudo verificar el último código. Se propone ' + $('codigo').value + '.', true);
-    return $('codigo').value;
-  }
 }
+
+
+
+/* ================================
+   LOGIN
+================================ */
+
+function showAdmin(){
+
+$('loginView')
+.classList
+.add('hidden');
+
+
+$('adminView')
+.classList
+.remove('hidden');
+
+
+$('userEmail')
+.textContent =
+'Sesión: ' + currentEmail;
+
+
+loadProducts();
+
+
+if(
+  !$('productId').value
+){
+
+generateCode();
+
+}
+
+}
+
+
+
+function showLogin(){
+
+$('adminView')
+.classList
+.add('hidden');
+
+
+$('loginView')
+.classList
+.remove('hidden');
+
+}
+
+
+
+async function login(){
+
+hide('loginMsg');
+
+
+const email =
+$('email')
+.value
+.trim();
+
+
+const password =
+$('password')
+.value;
+
+
+if(
+  !email ||
+  !password
+){
+
+show(
+  'loginMsg',
+  'Escribe correo y contraseña.',
+  true
+);
+
+return;
+
+}
+
+
+show(
+  'loginMsg',
+  'Verificando acceso...'
+);
+
+
+try{
+
+
+const r =
+await fetch(
+
+SUPABASE_URL +
+
+'/auth/v1/token?grant_type=password',
+
+{
+
+method:'POST',
+
+headers:{
+
+'Content-Type':
+'application/json',
+
+'apikey':
+API_KEY
+
+},
+
+body:
+JSON.stringify({
+
+email,
+password
+
+})
+
+}
+
+);
+
+
+const data =
+await r.json();
+
+
+if(!r.ok){
+
+show(
+  'loginMsg',
+  'No se pudo iniciar sesión: ' +
+  (
+    data.msg ||
+    data.message ||
+    'credenciales incorrectas'
+  ),
+  true
+);
+
+return;
+
+}
+
+
+accessToken =
+data.access_token;
+
+
+currentEmail =
+(data.user &&
+data.user.email)
+||
+email;
+
+
+localStorage.setItem(
+  'rt360_access_token',
+  accessToken
+);
+
+
+localStorage.setItem(
+  'rt360_email',
+  currentEmail
+);
+
+
+showAdmin();
+
+
+}
+
+catch(err){
+
+show(
+  'loginMsg',
+  'Error de conexión: ' +
+  err.message,
+  true
+);
+
+}
+
+}
+
+
+
+/* ================================
+   RECUPERAR CONTRASEÑA
+================================ */
+
+async function recover(){
+
+hide('recoveryMsg');
+
+
+const email =
+$('email')
+.value
+.trim();
+
+
+if(!email){
+
+show(
+  'recoveryMsg',
+  'Escribe primero tu correo.',
+  true
+);
+
+return;
+
+}
+
+
+show(
+  'recoveryMsg',
+  'Enviando correo de recuperación...'
+);
+
+
+try{
+
+
+const url =
+
+SUPABASE_URL +
+
+'/auth/v1/recover?redirect_to=' +
+
+encodeURIComponent(
+  RESET_URL
+);
+
+
+const r =
+await fetch(
+
+url,
+
+{
+
+method:'POST',
+
+headers:{
+
+'Content-Type':
+'application/json',
+
+'apikey':
+API_KEY
+
+},
+
+body:
+JSON.stringify({
+
+email
+
+})
+
+}
+
+);
+
+
+let data = {};
+
+
+try{
+
+data =
+await r.json();
+
+}
+
+catch(e){}
+
+
+if(!r.ok){
+
+show(
+  'recoveryMsg',
+  'No se pudo enviar: ' +
+  (
+    data.msg ||
+    data.message ||
+    ('Error ' + r.status)
+  ),
+  true
+);
+
+return;
+
+}
+
+
+show(
+  'recoveryMsg',
+  'Correo enviado. Abre únicamente el mensaje más reciente.'
+);
+
+
+}
+
+catch(err){
+
+show(
+  'recoveryMsg',
+  'Error de conexión: ' +
+  err.message,
+  true
+);
+
+}
+
+}
+
+
+
+function logout(){
+
+accessToken = '';
+
+currentEmail = '';
+
+
+localStorage.removeItem(
+  'rt360_access_token'
+);
+
+
+localStorage.removeItem(
+  'rt360_email'
+);
+
+
+showLogin();
+
+}
+
+
+
+/* ================================
+   CÓDIGOS AUTOMÁTICOS
+================================ */
+
+const CODE_PREFIXES = {
+
+'Chaquiras':'CHQ',
+
+'Textiles':'TEX',
+
+'Accesorios':'ACC',
+
+'Naguas':'NAG',
+
+'Camisas':'CAM',
+
+'Otros':'OTR'
+
+};
+
+
+
+async function generateCode(){
+
+/*
+Si estamos editando un producto,
+mantiene su código original.
+*/
+
+if(
+  $('productId').value
+){
+
+return $('codigo').value;
+
+}
+
+
+hide('formMsg');
+
+
+const categoria =
+$('categoria').value ||
+'Otros';
+
+
+const prefix =
+CODE_PREFIXES[categoria]
+||
+'OTR';
+
+
+const base =
+'R360-' +
+prefix +
+'-';
+
+
+$('codigo').value =
+'Generando...';
+
+
+try{
+
+
+/*
+Se consultan TODOS los códigos
+existentes en Supabase.
+*/
+
+const r =
+await fetch(
+
+SUPABASE_URL +
+
+'/rest/v1/productos?select=codigo',
+
+{
+
+headers:
+authHeaders()
+
+}
+
+);
+
+
+const data =
+await r.json();
+
+
+if(!r.ok){
+
+throw new Error(
+
+data.message ||
+
+'No se pudieron consultar los códigos'
+
+);
+
+}
+
+
+let mayor = 0;
+
+
+for(
+  const item
+  of data
+){
+
+const code =
+String(
+  item.codigo || ''
+);
+
+
+if(
+  code.startsWith(base)
+){
+
+const numero =
+parseInt(
+
+code.substring(
+  base.length
+),
+
+10
+
+);
+
+
+if(
+  Number.isFinite(numero) &&
+  numero > mayor
+){
+
+mayor =
+numero;
+
+}
+
+}
+
+}
+
+
+/*
+Siguiente número disponible
+*/
+
+const siguiente =
+
+String(
+  mayor + 1
+)
+.padStart(
+  3,
+  '0'
+);
+
+
+const codigoNuevo =
+
+base +
+siguiente;
+
+
+$('codigo').value =
+codigoNuevo;
+
+
+return codigoNuevo;
+
+
+}
+
+catch(err){
+
+
+/*
+MUY IMPORTANTE:
+
+Si Supabase falla,
+NO se asigna 001.
+Así evitamos duplicados.
+*/
+
+$('codigo').value = '';
+
+
+show(
+
+'formMsg',
+
+'No se pudo generar el código. Pulsa Actualizar e inténtalo nuevamente.',
+
+true
+
+);
+
+
+return '';
+
+
+}
+
+}
+
+
+
+/* ================================
+   LIMPIAR FORMULARIO
+================================ */
 
 function clearForm(){
-  $('productId').value='';
-  $('oldImageUrl').value='';
-  $('codigo').value='';
-  $('nombre').value='';
-  $('categoria').value='Accesorios';
-  $('descripcion').value='';
-  $('precio').value='';
-  $('disponibilidad').value='Disponible';
-  $('foto').value='';
-  $('activo').checked=true;
-  $('preview').src='';
-  $('preview').style.display='none';
-  $('formTitle').textContent='Nuevo producto';
-  hide('formMsg');
-  generateCode();
+
+$('productId').value = '';
+
+$('oldImageUrl').value = '';
+
+$('codigo').value = '';
+
+$('nombre').value = '';
+
+$('categoria').value =
+'Accesorios';
+
+$('descripcion').value = '';
+
+$('precio').value = '';
+
+$('disponibilidad').value =
+'Disponible';
+
+$('foto').value = '';
+
+$('activo').checked =
+true;
+
+$('preview').src = '';
+
+$('preview').style.display =
+'none';
+
+$('formTitle').textContent =
+'Nuevo producto';
+
+
+hide('formMsg');
+
+
+generateCode();
+
 }
 
 
-$('categoria').addEventListener('change',()=>{
-  if(!$('productId').value) generateCode();
-});
 
-$('foto').addEventListener('change',e=>{
-  const f=e.target.files[0];
-  if(!f) return;
-  $('preview').src=URL.createObjectURL(f);
-  $('preview').style.display='block';
-});
+/* ================================
+   CAMBIO DE CATEGORÍA
+================================ */
 
-async function uploadImage(file, code){
-  const ext=(file.name.split('.').pop()||'jpg').toLowerCase();
-  const safe=(code||'producto').replace(/[^a-z0-9_-]/gi,'_');
-  const path=safe+'_'+Date.now()+'.'+ext;
+$('categoria')
+.addEventListener(
+  'change',
+  async ()=>{
 
-  const r=await fetch(
-    SUPABASE_URL+'/storage/v1/object/productos/'+encodeURIComponent(path),
-    {
-      method:'POST',
-      headers:authHeaders({
-        'Content-Type':file.type||'application/octet-stream',
-        'x-upsert':'false'
-      }),
-      body:file
-    }
-  );
+/*
+Solo genera código nuevo
+si NO estamos editando.
+*/
 
-  if(!r.ok){
-    let data={};
-    try{data=await r.json();}catch(_e){}
-    throw new Error(data.message||data.error||'No se pudo subir la foto');
-  }
+if(
+  !$('productId').value
+){
 
-  return SUPABASE_URL+'/storage/v1/object/public/productos/'+encodeURIComponent(path);
+hide('formMsg');
+
+$('codigo').value = '';
+
+await generateCode();
+
 }
+
+}
+);
+
+
+
+/* ================================
+   VISTA PREVIA DE FOTO
+================================ */
+
+$('foto')
+.addEventListener(
+  'change',
+  e=>{
+
+const f =
+e.target.files[0];
+
+
+if(!f){
+
+return;
+
+}
+
+
+$('preview').src =
+URL.createObjectURL(f);
+
+
+$('preview').style.display =
+'block';
+
+}
+);
+
+
+
+/* ================================
+   SUBIR FOTO
+================================ */
+
+async function uploadImage(
+  file,
+  code
+){
+
+const ext =
+
+(
+  file.name
+  .split('.')
+  .pop()
+  ||
+  'jpg'
+)
+.toLowerCase();
+
+
+const safe =
+
+(
+  code ||
+  'producto'
+)
+
+.replace(
+  /[^a-z0-9_-]/gi,
+  '_'
+);
+
+
+const path =
+
+safe +
+
+'_' +
+
+Date.now() +
+
+'.' +
+
+ext;
+
+
+const r =
+await fetch(
+
+SUPABASE_URL +
+
+'/storage/v1/object/productos/' +
+
+encodeURIComponent(path),
+
+{
+
+method:'POST',
+
+headers:
+authHeaders({
+
+'Content-Type':
+file.type ||
+'application/octet-stream',
+
+'x-upsert':
+'false'
+
+}),
+
+body:file
+
+}
+
+);
+
+
+if(!r.ok){
+
+let data = {};
+
+
+try{
+
+data =
+await r.json();
+
+}
+
+catch(e){}
+
+
+throw new Error(
+
+data.message ||
+
+data.error ||
+
+'No se pudo subir la foto'
+
+);
+
+}
+
+
+return (
+
+SUPABASE_URL +
+
+'/storage/v1/object/public/productos/' +
+
+encodeURIComponent(path)
+
+);
+
+}
+
+
+
+/* ================================
+   BORRAR FOTO
+================================ */
 
 async function deleteImage(url){
-  if(!url) return;
-  const marker='/storage/v1/object/public/productos/';
-  const i=url.indexOf(marker);
-  if(i===-1) return;
-  const path=decodeURIComponent(url.substring(i+marker.length));
 
-  await fetch(
-    SUPABASE_URL+'/storage/v1/object/productos/'+encodeURIComponent(path),
-    {
-      method:'DELETE',
-      headers:authHeaders()
-    }
-  );
+if(!url){
+
+return;
+
 }
+
+
+const marker =
+
+'/storage/v1/object/public/productos/';
+
+
+const i =
+url.indexOf(marker);
+
+
+if(i === -1){
+
+return;
+
+}
+
+
+const path =
+
+decodeURIComponent(
+
+url.substring(
+
+i +
+marker.length
+
+)
+
+);
+
+
+await fetch(
+
+SUPABASE_URL +
+
+'/storage/v1/object/productos/' +
+
+encodeURIComponent(path),
+
+{
+
+method:'DELETE',
+
+headers:
+authHeaders()
+
+}
+
+);
+
+}
+
+
+
+/* ================================
+   GUARDAR PRODUCTO
+================================ */
 
 async function saveProduct(event){
-  if(event) event.preventDefault();
-  hide('formMsg');
 
-  const saveButton=$('saveBtn');
-  if(saveButton){
-    saveButton.disabled=true;
-    saveButton.textContent='Guardando...';
-  }
+if(event){
 
-  if(!$('productId').value && (!$('codigo').value.trim() || $('codigo').value==='Generando...')){
-    await generateCode();
-  }
+event.preventDefault();
 
-  if(!$('codigo').value.trim() || !$('nombre').value.trim()){
-    show('formMsg','Completa código y nombre.',true);
-    if(saveButton){
-      saveButton.disabled=false;
-      saveButton.textContent='Guardar producto';
-    }
-    return;
-  }
-
-  show('formMsg','Guardando producto...');
-
-  try{
-    const id=$('productId').value;
-    const oldImage=$('oldImageUrl').value;
-    let imageUrl=oldImage||null;
-    const file=$('foto').files[0];
-
-    if(file){
-      imageUrl=await uploadImage(file,$('codigo').value.trim());
-    }
-
-    const payload={
-      codigo:$('codigo').value.trim(),
-      nombre:$('nombre').value.trim(),
-      categoria:$('categoria').value,
-      descripcion:$('descripcion').value.trim(),
-      precio:$('precio').value===''?null:Number($('precio').value),
-      disponibilidad:$('disponibilidad').value,
-      imagen_url:imageUrl,
-      activo:$('activo').checked
-    };
-
-    const url=id
-      ? SUPABASE_URL+'/rest/v1/productos?id=eq.'+encodeURIComponent(id)
-      : SUPABASE_URL+'/rest/v1/productos';
-
-    const r=await fetch(url,{
-      method:id?'PATCH':'POST',
-      headers:authHeaders({
-        'Content-Type':'application/json',
-        'Prefer':'return=representation'
-      }),
-      body:JSON.stringify(payload)
-    });
-
-    let data=[];
-    try{data=await r.json();}catch(_e){}
-
-    if(!r.ok){
-      throw new Error((data&&data.message)||'No se pudo guardar');
-    }
-
-    if(file && oldImage && oldImage!==imageUrl){
-      await deleteImage(oldImage);
-    }
-
-    show('formMsg',id?'Producto actualizado.':'Producto agregado.');
-    clearForm();
-    loadProducts();
-
-  }catch(err){
-    show('formMsg','Error: '+err.message,true);
-  }finally{
-    const saveButton=$('saveBtn');
-    if(saveButton){
-      saveButton.disabled=false;
-      saveButton.textContent='Guardar producto';
-    }
-  }
 }
+
+
+hide('formMsg');
+
+
+const saveButton =
+$('saveBtn');
+
+
+if(saveButton){
+
+saveButton.disabled =
+true;
+
+saveButton.textContent =
+'Guardando...';
+
+}
+
+
+/*
+Si es producto nuevo,
+verifica que exista
+un código válido.
+*/
+
+if(
+  !$('productId').value &&
+  (
+    !$('codigo').value.trim() ||
+    $('codigo').value === 'Generando...'
+  )
+){
+
+await generateCode();
+
+}
+
+
+/*
+Si no pudo generar código,
+NO guarda.
+*/
+
+if(
+  !$('codigo').value.trim()
+){
+
+show(
+
+'formMsg',
+
+'No se pudo generar un código válido. Pulsa Actualizar e inténtalo nuevamente.',
+
+true
+
+);
+
+
+if(saveButton){
+
+saveButton.disabled =
+false;
+
+saveButton.textContent =
+'Guardar producto';
+
+}
+
+
+return;
+
+}
+
+
+/*
+Validar nombre
+*/
+
+if(
+  !$('nombre')
+  .value
+  .trim()
+){
+
+show(
+
+'formMsg',
+
+'Completa el nombre del producto.',
+
+true
+
+);
+
+
+if(saveButton){
+
+saveButton.disabled =
+false;
+
+saveButton.textContent =
+'Guardar producto';
+
+}
+
+
+return;
+
+}
+
+
+try{
+
+
+const id =
+$('productId').value;
+
+
+const oldImage =
+$('oldImageUrl').value;
+
+
+let imageUrl =
+oldImage ||
+null;
+
+
+const file =
+$('foto').files[0];
+
+
+if(file){
+
+imageUrl =
+await uploadImage(
+
+file,
+
+$('codigo')
+.value
+.trim()
+
+);
+
+}
+
+
+const payload = {
+
+codigo:
+$('codigo')
+.value
+.trim(),
+
+nombre:
+$('nombre')
+.value
+.trim(),
+
+categoria:
+$('categoria')
+.value,
+
+descripcion:
+$('descripcion')
+.value
+.trim(),
+
+precio:
+$('precio').value === ''
+
+? null
+
+: Number(
+    $('precio').value
+  ),
+
+disponibilidad:
+$('disponibilidad')
+.value,
+
+imagen_url:
+imageUrl,
+
+activo:
+$('activo')
+.checked
+
+};
+
+
+/*
+URL de crear o editar
+*/
+
+const url = id
+
+?
+
+SUPABASE_URL +
+
+'/rest/v1/productos?id=eq.' +
+
+encodeURIComponent(id)
+
+:
+
+SUPABASE_URL +
+
+'/rest/v1/productos';
+
+
+const r =
+await fetch(
+
+url,
+
+{
+
+method:
+id
+? 'PATCH'
+: 'POST',
+
+headers:
+authHeaders({
+
+'Content-Type':
+'application/json',
+
+'Prefer':
+'return=representation'
+
+}),
+
+body:
+JSON.stringify(payload)
+
+}
+
+);
+
+
+let data = [];
+
+
+try{
+
+data =
+await r.json();
+
+}
+
+catch(e){}
+
+
+/*
+ERROR DE CÓDIGO DUPLICADO
+*/
+
+if(!r.ok){
+
+const mensaje =
+
+(data &&
+data.message)
+||
+'No se pudo guardar';
+
+
+/*
+Supabase devuelve 23505
+cuando viola UNIQUE.
+*/
+
+if(
+
+data &&
+(
+  data.code === '23505' ||
+  String(mensaje)
+  .toLowerCase()
+  .includes('duplicate')
+)
+
+){
+
+show(
+
+'formMsg',
+
+'Este código ya existe. Se generará uno nuevo automáticamente.',
+
+true
+
+);
+
+
+/*
+Generar un código nuevo
+sin guardar duplicado.
+*/
+
+$('codigo').value = '';
+
+await generateCode();
+
+
+throw new Error(
+
+'Código duplicado detectado. Revisa el nuevo código y pulsa Guardar nuevamente.'
+
+);
+
+}
+
+
+throw new Error(
+  mensaje
+);
+
+}
+
+
+/*
+Eliminar foto vieja
+si fue reemplazada.
+*/
+
+if(
+  file &&
+  oldImage &&
+  oldImage !== imageUrl
+){
+
+await deleteImage(
+  oldImage
+);
+
+}
+
+
+show(
+
+'formMsg',
+
+id
+
+? 'Producto actualizado correctamente.'
+
+: 'Producto agregado correctamente.'
+
+);
+
+
+/*
+Después de guardar,
+limpia y genera
+el siguiente código.
+*/
+
+clearForm();
+
+loadProducts();
+
+
+}
+
+catch(err){
+
+
+show(
+
+'formMsg',
+
+'Error: ' +
+err.message,
+
+true
+
+);
+
+
+}
+
+finally{
+
+
+if(saveButton){
+
+saveButton.disabled =
+false;
+
+saveButton.textContent =
+'Guardar producto';
+
+}
+
+
+}
+
+}
+
+
+
+/* ================================
+   CARGAR PRODUCTOS
+================================ */
 
 async function loadProducts(){
-  $('productList').innerHTML='<p class="muted">Cargando...</p>';
 
-  try{
-    const r=await fetch(
-      SUPABASE_URL+'/rest/v1/productos?select=*&order=id.desc',
-      {headers:authHeaders()}
-    );
+$('productList')
+.innerHTML =
 
-    const data=await r.json();
+'<p class="muted">Cargando...</p>';
 
-    if(!r.ok){
-      throw new Error(data.message||'No se pudieron cargar los productos');
-    }
 
-    $('productList').innerHTML='';
+hide('listMsg');
 
-    if(!data.length){
-      $('productList').innerHTML='<p class="muted">Todavía no hay productos.</p>';
-      return;
-    }
 
-    data.forEach(p=>{
-      const row=document.createElement('article');
-      row.className='product';
+try{
 
-      const img=p.imagen_url
-        ? '<img src="'+esc(p.imagen_url)+'" alt="'+esc(p.nombre||'Producto')+'">'
-        : '<div style="width:110px;height:95px;background:#eee;border-radius:10px;display:grid;place-items:center">Sin foto</div>';
 
-      row.innerHTML=img+
-        '<div>'+
-          '<div class="muted">'+esc(p.codigo||'')+'</div>'+
-          '<h3 style="margin:4px 0">'+esc(p.nombre||'')+'</h3>'+
-          '<span class="badge">'+esc(p.categoria||'')+'</span>'+
-          '<span class="badge">'+esc(p.disponibilidad||'')+'</span>'+
-          '<p class="muted">'+esc(p.descripcion||'')+'</p>'+
-          '<div class="price">'+(p.precio==null?'Sin precio':'B/. '+Number(p.precio).toFixed(2))+'</div>'+
-          '<div class="muted">'+(p.activo===false?'Oculto':'Visible en catálogo')+'</div>'+
-        '</div>'+
-        '<div class="row-actions">'+
-          '<button class="secondary editBtn">Editar</button>'+
-          '<button class="danger delBtn">Borrar</button>'+
-        '</div>';
+const r =
+await fetch(
 
-      row.querySelector('.editBtn').onclick=()=>editProduct(p);
-      row.querySelector('.delBtn').onclick=()=>deleteProduct(p);
-      $('productList').appendChild(row);
-    });
+SUPABASE_URL +
 
-  }catch(err){
-    $('productList').innerHTML='';
-    show('listMsg','Error: '+err.message,true);
-  }
+'/rest/v1/productos?select=*&order=id.desc',
+
+{
+
+headers:
+authHeaders()
+
 }
+
+);
+
+
+const data =
+await r.json();
+
+
+if(!r.ok){
+
+throw new Error(
+
+data.message ||
+
+'No se pudieron cargar los productos'
+
+);
+
+}
+
+
+$('productList')
+.innerHTML = '';
+
+
+if(!data.length){
+
+$('productList')
+.innerHTML =
+
+'<p class="muted">Todavía no hay productos.</p>';
+
+return;
+
+}
+
+
+/*
+Mostrar productos
+*/
+
+data.forEach(p=>{
+
+
+const row =
+document.createElement(
+  'article'
+);
+
+
+row.className =
+'product';
+
+
+const img =
+
+p.imagen_url
+
+?
+
+'<img src="' +
+
+esc(p.imagen_url) +
+
+'" alt="' +
+
+esc(
+  p.nombre ||
+  'Producto'
+) +
+
+'">'
+
+:
+
+'<div style="' +
+
+'width:110px;' +
+
+'height:95px;' +
+
+'background:#eee;' +
+
+'border-radius:10px;' +
+
+'display:grid;' +
+
+'place-items:center;' +
+
+'font-size:12px' +
+
+'">Sin foto</div>';
+
+
+row.innerHTML =
+
+img +
+
+'<div>' +
+
+'<div class="muted">' +
+
+esc(p.codigo || '') +
+
+'</div>' +
+
+'<h3 style="margin:4px 0">' +
+
+esc(p.nombre || '') +
+
+'</h3>' +
+
+'<span class="badge">' +
+
+esc(p.categoria || '') +
+
+'</span>' +
+
+'<span class="badge">' +
+
+esc(p.disponibilidad || '') +
+
+'</span>' +
+
+'<p class="muted">' +
+
+esc(p.descripcion || '') +
+
+'</p>' +
+
+'<div class="price">' +
+
+(
+  p.precio == null
+
+  ? 'Sin precio'
+
+  : 'B/. ' +
+    Number(p.precio)
+    .toFixed(2)
+) +
+
+'</div>' +
+
+'<div class="muted">' +
+
+(
+  p.activo === false
+
+  ? 'Oculto'
+
+  : 'Visible en catálogo'
+) +
+
+'</div>' +
+
+'</div>' +
+
+'<div class="row-actions">' +
+
+'<button class="secondary editBtn">' +
+
+'Editar' +
+
+'</button>' +
+
+'<button class="danger delBtn">' +
+
+'Borrar' +
+
+'</button>' +
+
+'</div>';
+
+
+row
+.querySelector(
+  '.editBtn'
+)
+.onclick = ()=>{
+
+editProduct(p);
+
+};
+
+
+row
+.querySelector(
+  '.delBtn'
+)
+.onclick = ()=>{
+
+deleteProduct(p);
+
+};
+
+
+$('productList')
+.appendChild(row);
+
+
+});
+
+
+}
+
+catch(err){
+
+
+$('productList')
+.innerHTML = '';
+
+
+show(
+
+'listMsg',
+
+'Error: ' +
+err.message,
+
+true
+
+);
+
+
+}
+
+}
+
+
+
+/* ================================
+   EDITAR PRODUCTO
+================================ */
 
 function editProduct(p){
-  $('productId').value=p.id||'';
-  $('oldImageUrl').value=p.imagen_url||'';
-  $('codigo').value=p.codigo||'';
-  $('nombre').value=p.nombre||'';
-  $('categoria').value=p.categoria||'Otros';
-  $('descripcion').value=p.descripcion||'';
-  $('precio').value=p.precio??'';
-  $('disponibilidad').value=p.disponibilidad||'Disponible';
-  $('activo').checked=p.activo!==false;
-  $('formTitle').textContent='Editar producto';
 
-  if(p.imagen_url){
-    $('preview').src=p.imagen_url;
-    $('preview').style.display='block';
-  }else{
-    $('preview').style.display='none';
-  }
-  window.scrollTo({top:0,behavior:'smooth'});
+$('productId').value =
+p.id || '';
+
+$('oldImageUrl').value =
+p.imagen_url || '';
+
+$('codigo').value =
+p.codigo || '';
+
+$('nombre').value =
+p.nombre || '';
+
+$('categoria').value =
+p.categoria || 'Otros';
+
+$('descripcion').value =
+p.descripcion || '';
+
+$('precio').value =
+p.precio ?? '';
+
+$('disponibilidad').value =
+p.disponibilidad ||
+'Disponible';
+
+$('activo').checked =
+p.activo !== false;
+
+
+$('formTitle').textContent =
+'Editar producto';
+
+
+hide('formMsg');
+
+
+if(p.imagen_url){
+
+$('preview').src =
+p.imagen_url;
+
+$('preview').style.display =
+'block';
+
 }
+
+else{
+
+$('preview').style.display =
+'none';
+
+}
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:'smooth'
+
+});
+
+}
+
+
+
+/* ================================
+   BORRAR PRODUCTO
+================================ */
 
 async function deleteProduct(p){
-  if(!confirm('¿Deseas borrar este producto?')) return;
 
-  try{
-    const r=await fetch(
-      SUPABASE_URL+'/rest/v1/productos?id=eq.'+encodeURIComponent(p.id),
-      {method:'DELETE',headers:authHeaders()}
-    );
+if(
+  !confirm(
+    '¿Deseas borrar este producto?'
+  )
+){
 
-    if(!r.ok){
-      let data={};
-      try{data=await r.json();}catch(_e){}
-      throw new Error(data.message||'No se pudo borrar');
-    }
+return;
 
-    if(p.imagen_url) await deleteImage(p.imagen_url);
-    show('listMsg','Producto eliminado.');
-    loadProducts();
-
-  }catch(err){
-    show('listMsg','Error: '+err.message,true);
-  }
 }
 
-$('loginBtn').onclick=login;
-$('forgotBtn').onclick=recover;
-$('logoutBtn').onclick=logout;
-$('clearBtn').onclick=clearForm;
-$('newBtn').onclick=clearForm;
-$('refreshBtn').onclick=loadProducts;
 
-if(accessToken && currentEmail){
-  showAdmin();
-}else{
-  showLogin();
+try{
+
+
+const r =
+await fetch(
+
+SUPABASE_URL +
+
+'/rest/v1/productos?id=eq.' +
+
+encodeURIComponent(p.id),
+
+{
+
+method:'DELETE',
+
+headers:
+authHeaders()
+
 }
+
+);
+
+
+if(!r.ok){
+
+let data = {};
+
+
+try{
+
+data =
+await r.json();
+
+}
+
+catch(e){}
+
+
+throw new Error(
+
+data.message ||
+
+'No se pudo borrar'
+
+);
+
+}
+
+
+if(p.imagen_url){
+
+await deleteImage(
+  p.imagen_url
+);
+
+}
+
+
+show(
+
+'listMsg',
+
+'Producto eliminado.'
+
+);
+
+
+await loadProducts();
+
+
+/*
+Actualizar próximo código
+después de borrar
+*/
+
+if(
+  !$('productId').value
+){
+
+await generateCode();
+
+}
+
+
+}
+
+catch(err){
+
+
+show(
+
+'listMsg',
+
+'Error: ' +
+err.message,
+
+true
+
+);
+
+
+}
+
+}
+
+
+
+/* ================================
+   BOTONES
+================================ */
+
+$('loginBtn')
+.onclick =
+login;
+
+
+$('forgotBtn')
+.onclick =
+recover;
+
+
+$('logoutBtn')
+.onclick =
+logout;
+
+
+$('clearBtn')
+.onclick =
+clearForm;
+
+
+$('newBtn')
+.onclick =
+clearForm;
+
+
+$('refreshBtn')
+.onclick =
+async ()=>{
+
+await loadProducts();
+
+
+if(
+  !$('productId').value
+){
+
+await generateCode();
+
+}
+
+};
+
+
+
+/* ================================
+   INICIO
+================================ */
+
+if(
+  accessToken &&
+  currentEmail
+){
+
+showAdmin();
+
+}
+
+else{
+
+showLogin();
+
+}
+
 </script>
 
 </body>
