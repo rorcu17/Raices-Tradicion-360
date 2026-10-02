@@ -270,7 +270,7 @@ footer{background:var(--verde2);color:#fff;padding:28px 20px}
   <div class="heading">
     <div class="eyebrow">Pedido híbrido</div>
     <h2>Solicita tu producto</h2>
-    <p>Realiza una prueba de pedido desde la página. Posteriormente puede conectarse a WhatsApp o a un registro de pedidos.</p>
+    <p>Completa el formulario y envía tu solicitud. El pedido quedará registrado para que el administrador pueda darle seguimiento.</p>
   </div>
 
   <div class="order">
@@ -299,7 +299,7 @@ footer{background:var(--verde2);color:#fff;padding:28px 20px}
         <textarea id="orderDetail" placeholder="Talla, colores, diseño u otra indicación"></textarea>
       </label>
 
-      <button class="btn btn-primary" type="button" onclick="prepareOrder()">Preparar pedido</button>
+      <button id="orderBtn" class="btn btn-primary" type="button" onclick="saveOrder()">Enviar pedido</button>
       <div id="orderMsg" class="order-msg"></div>
     </div>
   </div>
@@ -438,12 +438,13 @@ function fillOrderProducts(){
   });
 }
 
-function prepareOrder(){
+async function saveOrder(){
   const name=document.getElementById('orderName').value.trim();
   const product=document.getElementById('orderProduct').value;
-  const qty=document.getElementById('orderQty').value;
+  const qty=Math.max(1,Number(document.getElementById('orderQty').value)||1);
   const detail=document.getElementById('orderDetail').value.trim();
   const msg=document.getElementById('orderMsg');
+  const btn=document.getElementById('orderBtn');
 
   if(!name||!product){
     msg.textContent='Completa el nombre y selecciona un producto.';
@@ -451,15 +452,67 @@ function prepareOrder(){
     return;
   }
 
-  msg.innerHTML=
-    '<strong>Pedido de prueba preparado:</strong><br>'+
-    'Cliente: '+esc(name)+'<br>'+
-    'Producto: '+esc(product)+'<br>'+
-    'Cantidad: '+esc(qty)+
-    (detail?'<br>Detalle: '+esc(detail):'')+
-    '<br><br>En el siguiente paso podemos enviarlo directamente por WhatsApp.';
-
+  btn.disabled=true;
+  btn.textContent='Enviando...';
+  msg.textContent='Registrando pedido...';
   msg.style.display='block';
+
+  try{
+    const r=await fetch(
+      SUPABASE_URL+'/rest/v1/pedidos',
+      {
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'apikey':API_KEY,
+          'Prefer':'return=representation'
+        },
+        body:JSON.stringify({
+          cliente:name,
+          producto:product,
+          cantidad:qty,
+          detalle:detail||null,
+          estado:'Recibido'
+        })
+      }
+    );
+
+    let data=[];
+    try{data=await r.json();}catch(_e){}
+
+    if(!r.ok){
+      throw new Error(
+        (data&&data.message)||
+        'No se pudo registrar el pedido.'
+      );
+    }
+
+    const saved=Array.isArray(data)?data[0]:data;
+    const orderId=saved&&saved.id ? String(saved.id).padStart(5,'0') : '';
+
+    msg.innerHTML=
+      '<strong>¡Pedido enviado correctamente!</strong><br>'+
+      (orderId?('Número de pedido: <strong>RT360-'+esc(orderId)+'</strong><br>'):'')+
+      'Cliente: '+esc(name)+'<br>'+
+      'Producto: '+esc(product)+'<br>'+
+      'Cantidad: '+esc(qty)+
+      (detail?'<br>Detalle: '+esc(detail):'')+
+      '<br><br>El administrador ya podrá verlo en la sección <strong>Pedidos</strong>.';
+
+    document.getElementById('orderName').value='';
+    document.getElementById('orderProduct').value='';
+    document.getElementById('orderQty').value='1';
+    document.getElementById('orderDetail').value='';
+
+  }catch(err){
+    msg.innerHTML=
+      '<strong>No se pudo enviar el pedido.</strong><br>'+
+      esc(err.message)+
+      '<br>Verifica primero que la tabla <strong>pedidos</strong> exista en Supabase.';
+  }finally{
+    btn.disabled=false;
+    btn.textContent='Enviar pedido';
+  }
 }
 
 loadProducts();
