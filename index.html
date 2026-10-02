@@ -465,7 +465,7 @@ async function saveOrder(){
         headers:{
           'Content-Type':'application/json',
           'apikey':API_KEY,
-          'Prefer':'return=representation'
+          'Prefer':'return=minimal'
         },
         body:JSON.stringify({
           cliente:name,
